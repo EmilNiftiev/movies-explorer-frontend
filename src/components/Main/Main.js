@@ -1,5 +1,5 @@
 import './Main.css';
-// import Header from '../Header/Header';
+import Header from '../Header/Header';
 // import Promo from '../Promo/Promo';
 // import NavTab from '../NavTab/NavTab';
 // import AboutProject from '../AboutProject/AboutProject';
@@ -11,14 +11,14 @@ import './Main.css';
 const Main = () => {
   return (
     <section className="main">
-      {/* <Header />
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
-      <Footer /> */}
+      <Header />
+      {/* <Promo /> */}
+      {/* <NavTab /> */}
+      {/* <AboutProject /> */}
+      {/* <Techs /> */}
+      {/* <AboutMe /> */}
+      {/* <Portfolio /> */}
+      {/* <Footer /> */}
     </section>
   );
 };
