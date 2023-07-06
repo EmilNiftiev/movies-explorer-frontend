@@ -1,39 +1,40 @@
 .about-project {
   padding: 110px 70px;
-  }
-  
-  .about-project__info {
+  background-color: #202020;
+}
+
+.about-project__info {
   display: flex;
   margin-top: 70px;
-  }
-  
-  .about-project__info-container {
+}
+
+.about-project__info-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin: 0 40px 0 0;
-  }
-  
-  .about-project__info-container:last-of-type {
+}
+
+.about-project__info-container:last-of-type {
   margin-right: 0;
-  }
-  
-  .about-project__info-title {
+}
+
+.about-project__info-title {
   margin: 0;
   padding: 0;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.04em;
-  }
-  
-  .about-project__info-text {
+}
+
+.about-project__info-text {
   padding: 0;
   margin: 26px 0 0;
   font-size: 14px;
   line-height: 20px;
-  }
-  
-  .about-project__timeline {
+}
+
+.about-project__timeline {
   display: grid;
   margin: 110px 0 0;
   justify-items: center;
@@ -41,11 +42,11 @@
   grid-template-columns: 228px 1fr;
   grid-template-rows: 36px 31px;
   grid-template-areas:
-    'timeline-duration-backend timeline-duration-frontend'
-    'timeline-name-backend timeline-name-frontend';
-  }
-  
-  .about-project__duration {
+    "timeline-duration-backend timeline-duration-frontend"
+    "timeline-name-backend timeline-name-frontend";
+}
+
+.about-project__duration {
   margin: 0;
   width: 100%;
   font-size: 14px;
@@ -53,34 +54,34 @@
   padding: 9px 0;
   box-sizing: border-box;
   text-align: center;
-  }
-  
-  .about-project__duration_type_backend {
-  background-color: #2BE080;
+}
+
+.about-project__duration_type_backend {
+  background-color: #3ddc84;
   color: #000;
   grid-area: timeline-duration-backend;
-  }
-  
-  .about-project__duration_type_frontend {
-  background-color: #f2f2f2;
+}
+
+.about-project__duration_type_frontend {
+  background-color: #303030;
   grid-area: timeline-duration-frontend;
-  color: #000;
-  }
-  
-  .about-project__name {
+  color: #fff;
+}
+
+.about-project__name {
   margin: 0;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: #a0a0a0;
+  color: #8b8b8b;
   text-align: center;
   padding-top: 14px;
-  }
-  
-  .about-project__name_type_backend {
+}
+
+.about-project__name_type_backend {
   grid-area: timeline-name-backend;
-  }
-  
-  .about-project__name_type_frontend {
+}
+
+.about-project__name_type_frontend {
   grid-area: timeline-name-frontend;
-  }
+}

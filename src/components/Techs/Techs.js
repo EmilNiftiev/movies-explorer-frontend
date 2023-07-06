@@ -1,12 +1,12 @@
-import './Techs.css';
-import Title from '../Title/Title';
-import TechnologyStack from '../TechnologyStack/TechnologyStack';
-import { techStack } from '../../utils/constants';
+import "./Techs.css";
+import Title from "../Title/Title";
+import TechnologyStack from "../TechnologyStack/TechnologyStack";
+import { techStack } from "../../utils/constants";
 
 const Techs = () => {
   return (
     <section id="techs" className="techs">
-      <Title title={'Технологии'} />
+      <Title title={"Технологии"} />
       <div className="techs__container">
         <h2 className="techs__title">7 технологий</h2>
         <p className="techs__subtitle">

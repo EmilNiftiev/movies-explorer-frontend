@@ -1,11 +1,11 @@
 .header {
-    box-sizing: border-box;
-    padding: 18px 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-		/* justify-items: center; */
-		box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 18px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* justify-items: center; */
+  box-sizing: border-box;
 }
 
 /* .header__logo-container {
@@ -18,32 +18,32 @@
 }
 
 .header__link {
-	text-decoration: none;
-	color: #fff;
-	font-size: 12px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 12px;
   line-height: 16px;
 }
 
 .header__button {
-    padding: 0;
-    margin: 0;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    transition: opacity 0.3s ease-in-out;
-  }
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
 
 .header__button_type_login {
-    margin-left: 30px;
-    padding: 8px 20px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    background-color: #3ddc84;
-    border-radius: 3px;
-    color: #000;
-  }
+  margin-left: 30px;
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #3ddc84;
+  border-radius: 3px;
+  color: #000;
+}

@@ -1,10 +1,10 @@
-import './AboutProject.css';
-import Title from '../Title/Title';
+import "./AboutProject.css";
+import Title from "../Title/Title";
 
 const AboutProject = () => {
   return (
     <section id="about-project" className="about-project">
-      <Title title={'О проекте'} />
+      <Title title={"О проекте"} />
       <section className="about-project__info">
         <div className="about-project__info-container">
           <p className="about-project__info-title">

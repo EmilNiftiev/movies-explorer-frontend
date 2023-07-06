@@ -1,13 +1,13 @@
-import './Promo.css';
+import "./Promo.css";
 
 const Main = () => {
-    return (
-      <section className="promo">
-        <h1 className='promo__title'>
+  return (
+    <section className="promo">
+      <h1 className="promo__title">
         Учебный проект студента факультета Веб-разработки.
-        </h1>
-      </section>
-    );
-  };
-  
-  export default Main;
+      </h1>
+    </section>
+  );
+};
+
+export default Main;

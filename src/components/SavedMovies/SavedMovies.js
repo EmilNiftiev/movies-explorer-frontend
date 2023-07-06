@@ -1,5 +1,5 @@
-import './SavedMovies.css';
-// import Header from '../Header/Header';
+import "./SavedMovies.css";
+import Header from "../Header/Header";
 // import SearchForm from '../SearchForm/SearchForm';
 // import MoviesCardList from '../MoviesCardList/MoviesCardList';
 // import Footer from '../Footer/Footer';
@@ -7,12 +7,12 @@ import './SavedMovies.css';
 const Movies = () => {
   return (
     <>
-    {/* <Header /> */}
-    <section className="saved-movies">
+      <Header />
+      <section className="saved-movies">
         {/* <SearchForm /> */}
         {/* <MoviesCardList /> */}
-    </section>
-    {/* <Footer /> */}
+      </section>
+      {/* <Footer /> */}
     </>
   );
 };

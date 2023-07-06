@@ -1,0 +1,61 @@
+.about-me {
+  padding: 110px 70px 100px;
+}
+
+.about-me__content {
+  display: flex;
+  justify-content: space-between;
+  margin: 66px 0 0 0;
+}
+
+.about-me__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-me__name {
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.about-me__job {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 18px 0 0;
+}
+
+.about-me__resume {
+  max-width: 600px;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 26px 0 0;
+}
+
+.about-me__photo {
+  height: 327px;
+  width: 270px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.about-me__links {
+  list-style: none;
+  margin: 99px 0 0;
+  padding: 0;
+}
+
+.about-me__link {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.about-me__link:hover {
+  opacity: 0.7;
+}

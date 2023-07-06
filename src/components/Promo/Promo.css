@@ -1,5 +1,8 @@
 .promo {
   display: flex;
+  background-color: #272727;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .promo__title {
