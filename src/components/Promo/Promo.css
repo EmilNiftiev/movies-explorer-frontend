@@ -1,0 +1,13 @@
+.promo {
+  display: flex;
+}
+
+.promo__title {
+  margin: 184px auto 224px;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  font-weight: normal;
+  letter-spacing: -0.04em;
+  max-width: 730px;
+}
