@@ -1,6 +1,7 @@
 import "./Header.css";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
+import Button from '../Button/Button';
 
 const Header = () => {
   return (
@@ -12,9 +13,10 @@ const Header = () => {
         <Link to="/signup" className="header__link">
           Регистрация
         </Link>
-        <button className="header__button header__button_type_login">
+        <Button text={'Вход'} type={'login'} />
+        {/* <button className="header__button header__button_type_login">
           Войти
-        </button>
+        </button> */}
       </nav>
     </header>
   );
