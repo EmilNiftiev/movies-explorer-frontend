@@ -15,7 +15,7 @@
 
 .header__menu {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .header__link {
@@ -24,6 +24,23 @@
   font-size: 12px;
   line-height: 16px;
   transition: opacity 0.3s ease-in;
+}
+
+.header__nav-links-item_type_active {
+  font-weight: 500;
+}
+
+.header__nav-links-item {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+  transition: opacity 0.3s ease-in;
+  margin-right: 16px;
+}
+
+.header__nav-links-item:last-of-type {
+  margin-right: 0;
 }
 
 .header__link:hover {

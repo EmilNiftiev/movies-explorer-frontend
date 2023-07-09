@@ -1,49 +1,127 @@
 .button {
-    padding: 0;
-    margin: 0;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    transition: opacity 0.3s ease-in;
-  }
-  
-  .button:hover {
-    opacity: 0.7;
-  }
-  
-  .button_type_login {
-    margin-left: 30px;
-    padding: 8px 20px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    background-color: #3ddc84;
-    border-radius: 3px;
-    color: #000;
-  }
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
 
-  .button_type_account {
-    margin-left: 30px;
-    padding: 8px 20px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    background-color: #313131;
-    border-radius: 20px;
-    color: #fff;
-  }
+.button:hover {
+  opacity: 0.8;
+}
 
-  .button_type_search {
-    width: 34px;
-    height: 34px;
-    background-color: #313131;
-    background-image: url('../../images/button/search-button.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 48px;
-    color: #fff;
-  }
+.button_type_login {
+  margin-left: 30px;
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #3ddc84;
+  border-radius: 3px;
+  color: #000;
+}
+
+.button_type_account {
+  margin-left: 30px;
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  background-color: #313131;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.button_type_search {
+  display: block;
+  width: 34px;
+  height: 34px;
+  background-color: #4285f4;
+  background-image: url("../../images/button/search-button.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 48px;
+  color: #fff;
+}
+
+.button_type_more {
+  max-width: 1140px;
+  width: 100%;
+  border-radius: 6px;
+  margin: 60px auto 71px;
+  padding: 11px 0 9px;
+  background-color: #2f2f2f;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.button_type_movies-like {
+  background-image: url("../../images/button/movies-like-button-image.svg");
+  width: 14px;
+  height: 12px;
+  object-fit: cover;
+  background-color: #2f2f2f;
+}
+
+.button_type_movies-like_active {
+  background-image: url("../../images/button/movies-like-button-active.svg");
+}
+
+.button_type_delete-movie {
+  width: 14px;
+  height: 12px;
+  background: inherit;
+  color: #fff;
+  background-image: url(../../images/button/delete-movie.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+}
+
+.button_type_form-login {
+  width: 100%;
+  border-radius: 3px;
+  background: #4285f4;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 179px;
+  padding: 13px 0 15px;
+}
+
+.button_type_form-register {
+  width: 100%;
+  border-radius: 3px;
+  background: #4285f4;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 91px;
+  padding: 13px 0 15px;
+}
+
+.button_type_profile-edit {
+  color: #fff;
+  background-color: inherit;
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 204px;
+}
+
+.button_type_logout {
+  color: #ee3465;
+  background-color: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 16px;
+}
