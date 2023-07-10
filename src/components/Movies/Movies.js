@@ -4,13 +4,17 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 
-const Movies = () => {
+const Movies = ({ isLoggedIn, openSideMenu, isTablet }) => {
   return (
     <>
-      <Header />
+      <Header
+        isLoggedIn={isLoggedIn}
+        openSideMenu={openSideMenu}
+        isTablet={isTablet}
+      />
       <section className="movies">
         <SearchForm />
-        <MoviesCardList />
+        <MoviesCardList isTablet={isTablet} />
       </section>
       <Footer />
     </>

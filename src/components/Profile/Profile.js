@@ -2,10 +2,14 @@ import "./Profile.css";
 import Header from "../Header/Header";
 import Button from "../Button/Button";
 
-function Profile() {
+function Profile({ isLoggedIn, openSideMenu, isTablet }) {
   return (
     <>
-      <Header />
+      <Header
+        isLoggedIn={isLoggedIn}
+        openSideMenu={openSideMenu}
+        isTablet={isTablet}
+      />
       <section className="profile">
         <h3 className="profile__title">Привет, Виталий!</h3>
         <form name="profile" className="profile__form">

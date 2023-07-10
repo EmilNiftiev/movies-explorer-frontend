@@ -27,7 +27,6 @@
 }
 
 .button_type_account {
-  margin-left: 30px;
   padding: 8px 20px;
   font-weight: 500;
   font-size: 14px;
@@ -124,4 +123,27 @@
   font-size: 13px;
   line-height: 16px;
   margin-top: 16px;
+}
+
+.button_type_close-menu {
+  width: 22px;
+  height: 22px;
+  background-image: url(../../images/button/closeBtn.svg);
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+}
+
+.button_type_burger-button {
+  width: 44px;
+  height: 44px;
+  background-image: url(../../images/button/burger-menu-btn.svg);
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
 }

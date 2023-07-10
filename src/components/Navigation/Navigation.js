@@ -1,12 +1,13 @@
 import "./Navigation.css";
 import { NavLink } from "react-router-dom";
 
-const Navigation = ({ navStyle }) => {
+const Navigation = ({ navStyle, closeSideMenu }) => {
   return (
     <section>
       {navStyle === "header-menu" && (
         <nav className={"navigation"}>
           <NavLink
+            onClick={closeSideMenu}
             to="/movies"
             className={({ isActive }) =>
               `navigation__link ${isActive ? "navigation__link_active" : ""}`
@@ -15,9 +16,12 @@ const Navigation = ({ navStyle }) => {
             Фильмы
           </NavLink>
           <NavLink
+            onClick={closeSideMenu}
             to="/saved-movies"
             className={({ isActive }) =>
-              `navigation navigation__link ${isActive ? "navigation__link_active" : ""}`
+              `navigation navigation__link ${
+                isActive ? "navigation__link_active" : ""
+              }`
             }
           >
             Сохраненные фильмы
@@ -27,6 +31,7 @@ const Navigation = ({ navStyle }) => {
       {navStyle === "side-menu" && (
         <nav className={"side-navigation"}>
           <NavLink
+            onClick={closeSideMenu}
             to="/"
             className={({ isActive }) =>
               `side-navigation side-navigation__link ${
@@ -37,6 +42,7 @@ const Navigation = ({ navStyle }) => {
             Главная
           </NavLink>
           <NavLink
+            onClick={closeSideMenu}
             to="/movies"
             className={({ isActive }) =>
               `side-navigation side-navigation__link ${
@@ -47,6 +53,7 @@ const Navigation = ({ navStyle }) => {
             Фильмы
           </NavLink>
           <NavLink
+            onClick={closeSideMenu}
             to="/saved-movies"
             className={({ isActive }) =>
               `side-navigation side-navigation__link ${
