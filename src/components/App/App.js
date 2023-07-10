@@ -7,10 +7,12 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import SideMenu from "../SideMenu/SideMenu";
 
 const App = () => {
   return (
     <section className="app">
+      <SideMenu />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />

@@ -1,0 +1,58 @@
+/* ------------------- Навигация в хедере ------------------- */
+
+.navigation {
+  display: flex;
+}
+
+.navigation__link {
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 18px;
+  color: #fff;
+  margin-right: 16px;
+  transition: opacity 0.3s ease-in;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+}
+
+.navigation__link:hover {
+  opacity: 0.7;
+}
+
+.navigation__link:last-of-type {
+  margin: 0;
+}
+
+/* ------------------- Навигация в боковом меню ------------------- */
+
+.side-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.side-navigation__link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  padding-bottom: 4px;
+  margin: 22px 0 0 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.side-navigation__link_active {
+  border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+.side-navigation__link:first-of-type {
+  margin: 0;
+}
+
+.side-navigation__link:hover {
+  opacity: 0.7;
+}
