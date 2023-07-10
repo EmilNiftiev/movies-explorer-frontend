@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Button.css";
 
-const Button = ({ text, type, onClick, closeSideMenu, modificator }) => {
+const Button = ({ text, type, onClick, closeSideMenu }) => {
   return (
     <>
       {type === "login" ? (
@@ -30,7 +30,7 @@ const Button = ({ text, type, onClick, closeSideMenu, modificator }) => {
       ${type === "profile-edit" && "button_type_profile-edit"}
       ${type === "profile-logout" && "button_type_logout"}
       ${type === "close-menu" && "button_type_close-menu"}
-      ${type === "burger-button" && `button_type_burger-button ${modificator}`}
+      ${type === "burger-button" && "button_type_burger-button"}
       `}
         >
           {text}
