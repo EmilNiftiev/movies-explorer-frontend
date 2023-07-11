@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   background-color: #272727;
-  max-width: 1200px;
-  margin: 0 auto;
+  border-radius: 10px;
+  /* max-width: 1200px; */
+  margin: 0 40px;
 }
 
 .promo__title {
@@ -14,4 +15,15 @@
   font-weight: normal;
   letter-spacing: -0.04em;
   max-width: 730px;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    margin: 0 20px;
+  }
+  .promo__title {
+    margin: 350px auto 314px;
+    font-size: 40px;
+    max-width: 680px;
+  }
 }

@@ -52,3 +52,12 @@
   margin: 0;
   font-size: 13px;
 }
+
+@media screen and (max-width: 768px) {
+  .filter-checkbox {
+    flex-direction: row-reverse;
+  }
+  .filter-checkbox__title {
+    margin-right: 16px;
+  }
+}

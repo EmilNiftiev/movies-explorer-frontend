@@ -19,12 +19,10 @@ const Navigation = ({ navStyle, closeSideMenu }) => {
             onClick={closeSideMenu}
             to="/saved-movies"
             className={({ isActive }) =>
-              `navigation navigation__link ${
-                isActive ? "navigation__link_active" : ""
-              }`
+              `navigation navigation__link ${isActive ? "navigation__link_active" : ""}`
             }
           >
-            Сохраненные фильмы
+            Сохранённые фильмы
           </NavLink>
         </nav>
       )}

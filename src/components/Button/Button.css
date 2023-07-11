@@ -153,4 +153,10 @@
   .button_type_burger-button {
     display: block;
   }
+  .button_type_more {
+    margin: 80px auto 51px;
+  }
+  .button_type_profile-edit {
+    margin-top: 210px;
+  }
 }

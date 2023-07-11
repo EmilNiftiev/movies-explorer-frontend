@@ -30,6 +30,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .header {
+    padding: 18px 30px 38px;
+  }
   .header__nav-visibility {
     display: none;
   }

@@ -59,3 +59,30 @@
 .about-me__link:hover {
   opacity: 0.7;
 }
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    padding: 90px 50px;
+  }
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .about-me__job {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 16px;
+  }
+  .about-me__resume {
+    max-width: 364px;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 20px;
+  }
+  .about-me__photo {
+    height: 307px;
+    width: 255px;
+  }
+}

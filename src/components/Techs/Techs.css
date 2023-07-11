@@ -40,3 +40,23 @@
   justify-content: space-around;
   color: #000;
 }
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 90px 50px;
+  }
+  .techs__title {
+    font-size: 50px;
+    letter-spacing: -0.04em;
+    margin-top: 80px;
+  }
+  .techs__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.04em;
+    margin-top: 22px;
+  }
+  .techs__list {
+    margin-top: 83px;
+  }
+}

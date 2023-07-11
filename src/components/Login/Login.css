@@ -89,3 +89,9 @@
   color: #8b8b8b;
   margin: 0 6px 0 0;
 }
+
+@media screen and (max-width: 768px) {
+  .login {
+    padding: 232px 0;
+  }
+}

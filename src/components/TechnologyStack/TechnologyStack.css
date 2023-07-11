@@ -17,3 +17,12 @@
 .technology-stack:hover {
   opacity: 0.6;
 }
+
+@media screen and (max-width: 768px) {
+  .technology-stack {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
