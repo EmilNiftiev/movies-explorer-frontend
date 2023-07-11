@@ -11,9 +11,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import SideMenu from "../SideMenu/SideMenu";
 
 const App = () => {
-  const isTablet = window.innerWidth <= 768 ? true : false;
-
-  const [isLoggedIn] = useState(true);
+  const [isLoggedIn] = useState(false);
   // ------------------- Управление боковым меню -------------------
   const [isSideMenu, setIsSideMenu] = useState(false);
 
@@ -41,45 +39,21 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={
-            <Main
-              isLoggedIn={isLoggedIn}
-              openSideMenu={openSideMenu}
-              isTablet={isTablet}
-            />
-          }
+          element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
         />
         <Route
           path="/movies"
-          element={
-            <Movies
-              isLoggedIn={isLoggedIn}
-              openSideMenu={openSideMenu}
-              isTablet={isTablet}
-            />
-          }
+          element={<Movies isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
         />
         <Route
           path="/saved-movies"
-          element={
-            <SavedMovies
-              isLoggedIn={isLoggedIn}
-              openSideMenu={openSideMenu}
-              isTablet={isTablet}
-            />
-          }
+          element={<SavedMovies isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
         />
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route
           path="/profile"
-          element={
-            <Profile
-              isLoggedIn={isLoggedIn}
-              openSideMenu={openSideMenu}
-              isTablet={isTablet}
-            />
-          }
+          element={<Profile isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

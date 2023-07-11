@@ -2,19 +2,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 0;
+  padding: 0 0 30px;
 }
 
 .nav-tab__link {
+  width: 96px;
+  height: 36px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 16px;
   font-weight: 500;
-  align-items: center;
+  text-align: center;
   color: #fff;
-  /* padding: 0; */
-  margin-right: 40px;
-  border-bottom: 1px solid rgb(255, 255, 255);
+  margin-right: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px 0;
+  background-color: #303030;
   transition: 0.3s ease-in;
 }
 

@@ -8,17 +8,12 @@ import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
 
-const Main = ({ isLoggedIn, openSideMenu, isTablet }) => {
+const Main = ({ isLoggedIn, openSideMenu }) => {
   return (
     <>
-      <Header
-        isLoggedIn={isLoggedIn}
-        openSideMenu={openSideMenu}
-        isTablet={isTablet}
-      />
+      <Header isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
       <section className="main">
         <Promo />
-        <NavTab />
         <AboutProject />
         <Techs />
         <AboutMe />

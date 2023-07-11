@@ -16,7 +16,7 @@
   line-height: 58px;
   font-weight: normal;
   letter-spacing: -0.04em;
-  margin: 90px 0 0 0;
+  margin: 89px 0 0 0;
 }
 
 .techs__subtitle {
@@ -32,7 +32,7 @@
   list-style: none;
   display: grid;
   padding: 0;
-  margin: 100px 0 0;
+  margin: 99px 0 0;
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   justify-items: center;

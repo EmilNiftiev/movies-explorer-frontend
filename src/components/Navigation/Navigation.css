@@ -2,6 +2,7 @@
 
 .navigation {
   display: flex;
+  margin-left: 60px;
 }
 
 .navigation__link {

@@ -5,13 +5,17 @@ import Button from "../Button/Button";
 import Navigation from "../Navigation/Navigation";
 import BurgerMenuButton from "../BurgerMenuBtn/BurgerMenuBtn";
 
-const Header = ({ openSideMenu, isLoggedIn, isTablet }) => {
+const Header = ({ openSideMenu, isLoggedIn }) => {
   return (
     <header className="header">
       <div className="header__logo-container">
         <Logo />
       </div>
-      {isLoggedIn && !isTablet && <Navigation navStyle={"header-menu"} />}
+      {isLoggedIn && (
+        <div className="header__nav-visibility">
+          <Navigation navStyle={"header-menu"} />
+        </div>
+      )}
       <nav className="header__menu">
         {!isLoggedIn && (
           <Link to="/signup" className="header__link">
@@ -21,11 +25,11 @@ const Header = ({ openSideMenu, isLoggedIn, isTablet }) => {
         {!isLoggedIn ? (
           <Button text={"Войти"} type={"login"} />
         ) : (
-          !isTablet && <Button type={"account"} text={"Аккаунт"} />
+          <div className="header__nav-visibility">
+            <Button type={"account"} text={"Аккаунт"} />
+          </div>
         )}
-        {isTablet && isLoggedIn && (
-          <BurgerMenuButton openSideMenu={openSideMenu} />
-        )}
+        {isLoggedIn && <BurgerMenuButton openSideMenu={openSideMenu} />}
       </nav>
     </header>
   );
