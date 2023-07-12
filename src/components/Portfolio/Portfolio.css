@@ -63,10 +63,35 @@
 
 @media screen and (max-width: 768px) {
   .portfolio {
-    padding: 0 50px 90px;
+    padding: 0 50px 71px;
   }
   .portfolio__name-item {
     margin: 0;
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .portfolio {
+    padding: 70px 13px 71px;
+  }
+  .portfolio__title {
+    font-size: 14px;
+  }
+  .portfolio__list {
+    margin-top: 24px;
+  }
+  .portfolio__link-item {
+    margin-top: 19px;
+  }
+  .portfolio__name-item {
+    font-size: 18px;
+    line-height: 28px;
+    padding-bottom: 19px;
+  }
+  .portfolio__link-symbol {
+    font-size: 19px;
+    line-height: 27px;
+    padding-right: 2px;
   }
 }

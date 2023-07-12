@@ -77,9 +77,9 @@
 
 @media screen and (max-width: 768px) {
   .profile {
-    padding: 134px 0 269px;
+    padding: 217px 0 269px;
   }
   .profile__form {
-    margin-top: 96px;
+    margin-top: 90px;
   }
 }

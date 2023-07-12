@@ -59,3 +59,35 @@
     padding: 79px 30px 20px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .footer {
+    padding: 58px 0px 20px;
+  }
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    align-self: center;
+    max-width: 300px;
+  }
+  .footer__text {
+    font-size: 12px;
+  }
+  .footer__link-item {
+    font-size: 12px;
+  }
+  .footer__list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer__list-item {
+    margin: 0 0 11px;
+  }
+  .footer__copyright {
+    order: 1;
+    font-size: 12px;
+    margin-top: 17px;
+    color: #8b8b8b;
+  }
+}

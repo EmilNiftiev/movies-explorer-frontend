@@ -9,3 +9,9 @@
   padding: 0 0 23px 0;
   border-bottom: 1px solid #dadada;
 }
+
+@media screen and (max-width: 320px) {
+  .title {
+    font-size: 18px;
+  }
+}

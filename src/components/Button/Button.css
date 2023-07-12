@@ -134,8 +134,8 @@
   background-position: center;
   object-fit: cover;
   position: absolute;
-  top: 22px;
-  right: 22px;
+  top: 27px;
+  right: 27px;
 }
 
 .button_type_burger-button {
@@ -157,6 +157,14 @@
     margin: 80px auto 51px;
   }
   .button_type_profile-edit {
-    margin-top: 210px;
+    margin-top: 196px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .button_type_login {
+    margin-left: 15px;
+    padding: 5px 12px;
+    font-size: 10px;
   }
 }

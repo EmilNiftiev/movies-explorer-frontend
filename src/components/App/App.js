@@ -11,7 +11,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import SideMenu from "../SideMenu/SideMenu";
 
 const App = () => {
-  const [isLoggedIn] = useState(true);
+  const [isLoggedIn] = useState(false);
   // ------------------- Управление боковым меню -------------------
   const [isSideMenu, setIsSideMenu] = useState(false);
 

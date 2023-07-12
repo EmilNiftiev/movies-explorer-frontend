@@ -31,9 +31,18 @@
 
 @media screen and (max-width: 768px) {
   .header {
-    padding: 18px 30px 38px;
+    padding: 19px 30px 34px;
   }
   .header__nav-visibility {
     display: none;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    padding: 18px 14px 32px;
+  }
+  .header__link {
+    font-size: 10px;
   }
 }

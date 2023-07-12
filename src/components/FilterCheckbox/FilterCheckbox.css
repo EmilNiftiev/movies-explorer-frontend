@@ -60,4 +60,10 @@
   .filter-checkbox__title {
     margin-right: 16px;
   }
+  .filter-checkbox__switcher {
+    margin: 0;
+  }
+  .filter-checkbox {
+    margin-top: 30px;
+  }
 }
