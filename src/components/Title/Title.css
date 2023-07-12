@@ -10,7 +10,7 @@
   border-bottom: 1px solid #dadada;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 414px) {
   .title {
     font-size: 18px;
   }

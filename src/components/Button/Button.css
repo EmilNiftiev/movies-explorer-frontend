@@ -161,10 +161,52 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 414px) {
   .button_type_login {
     margin-left: 15px;
     padding: 5px 12px;
     font-size: 10px;
+  }
+  .button_type_close-menu {
+    top: 18px;
+    right: 18px;
+  }
+  .button_type_movies-like {
+    position: absolute;
+    top: 16px;
+    right: -44px;
+  }
+  .button_type_burger-button {
+    width: 22px;
+    height: 24px;
+    margin-right: 9px;
+  }
+  .button_type_more {
+    margin: 72px 0;
+  }
+  .button_type_delete-movie {
+    position: absolute;
+    top: 16px;
+    right: -44px;
+  }
+  .button_type_profile-edit {
+    margin-top: 363px;
+    font-size: 12px;
+  }
+  .button_type_logout {
+    font-size: 12px;
+    margin-top: 15px;
+  }
+  .button_type_form-register {
+    max-width: 260px;
+    font-size: 12px;
+    margin-top: 179px;
+    padding: 14px 0;
+  }
+  .button_type_form-login {
+    max-width: 260px;
+    font-size: 12px;
+    margin-top: 267px;
+    padding: 14px 0;
   }
 }

@@ -7,3 +7,9 @@
     padding: 0 30px 29px;
   }
 }
+
+@media screen and (max-width: 414px) {
+  .movies {
+    padding: 0 10px 29px;
+  }
+}

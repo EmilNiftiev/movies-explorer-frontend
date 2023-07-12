@@ -95,3 +95,31 @@
     padding: 232px 0;
   }
 }
+
+@media screen and (max-width: 414px) {
+  .login {
+    padding: 56px 0 32px;
+    align-items: center;
+  }
+  .login__title {
+    margin-top: 50px;
+  }
+  .login__form {
+    margin-top: 80px;
+    align-items: center;
+    max-width: 260px;
+  }
+  .login__form-fields {
+    width: 100%;
+  }
+  .login__link-container {
+    margin-top: 13px;
+  }
+  .login__link-text {
+    font-size: 12px;
+    margin-right: 8px;
+  }
+  .login__link {
+    font-size: 12px;
+  }
+}

@@ -39,4 +39,20 @@
   .search-form {
     padding: 60px 0 80px;
   }
+  .search-form__input {
+    max-width: 670px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .search-form {
+    padding: 71px 4px 69px;
+  }
+  .search-form__input {
+    font-size: 18px;
+    max-width: 250px;
+  }
+  .search-form__container {
+    padding-bottom: 8px;
+  }
 }

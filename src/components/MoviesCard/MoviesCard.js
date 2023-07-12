@@ -8,7 +8,10 @@ const MoviesCard = () => {
   return (
     <section className="movies-card">
       <div className="movies-card__info">
-        <p className="movies-card__name">33 слова о дизайне</p>
+        <p className="movies-card__name">
+          33 слова о дизайне33 слова о дизайне33 слова о дизайне33 слова о
+          дизайне
+        </p>
         <div className="movies-card__duration">1ч 42м</div>
         {location.pathname === "/movies" ? (
           <Button text={""} type={"movies-like"} />
@@ -17,6 +20,7 @@ const MoviesCard = () => {
         )}
       </div>
       <a
+        className="movies-card__link"
         rel="noreferrer"
         target="_blank"
         href="https://www.kinopoisk.ru/film/1302273/?utm_referrer=www.google.com"

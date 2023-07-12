@@ -26,9 +26,10 @@
   box-sizing: border-box;
   align-items: center;
   background-color: #202020;
-  padding: 160px 0 90px;
+  padding: 160px 0 65px;
   position: relative;
   transition: all 0.3s ease-in-out;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 769px) {
@@ -37,7 +38,8 @@
   }
 }
 
-/* @media screen and (max-width: 320px) {
+@media screen and (max-width: 414px) {
   .side-menu__content {
+    padding: 145px 0 41px;
   }
-} */
+}

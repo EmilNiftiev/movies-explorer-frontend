@@ -83,3 +83,12 @@
     margin-top: 90px;
   }
 }
+
+@media screen and (max-width: 414px) {
+  .profile {
+    padding: 56px 30px 42px;
+  }
+  .profile__form {
+    margin-top: 75px;
+  }
+}
