@@ -19,7 +19,7 @@ const Navigation = ({ navStyle, closeSideMenu }) => {
             onClick={closeSideMenu}
             to="/saved-movies"
             className={({ isActive }) =>
-              `navigation navigation__link ${isActive ? "navigation__link_active" : ""}`
+              `navigation__link ${isActive ? "navigation__link_active" : ""}`
             }
           >
             Сохранённые фильмы
@@ -32,9 +32,7 @@ const Navigation = ({ navStyle, closeSideMenu }) => {
             onClick={closeSideMenu}
             to="/"
             className={({ isActive }) =>
-              `side-navigation side-navigation__link ${
-                isActive ? "side-navigation__link_active" : ""
-              }`
+              `side-navigation__link ${isActive ? "side-navigation__link_active" : ""}`
             }
           >
             Главная
@@ -43,9 +41,7 @@ const Navigation = ({ navStyle, closeSideMenu }) => {
             onClick={closeSideMenu}
             to="/movies"
             className={({ isActive }) =>
-              `side-navigation side-navigation__link ${
-                isActive ? "side-navigation__link_active" : ""
-              }`
+              `side-navigation__link ${isActive ? "side-navigation__link_active" : ""}`
             }
           >
             Фильмы
@@ -54,9 +50,7 @@ const Navigation = ({ navStyle, closeSideMenu }) => {
             onClick={closeSideMenu}
             to="/saved-movies"
             className={({ isActive }) =>
-              `side-navigation side-navigation__link ${
-                isActive ? "side-navigation__link_active" : ""
-              }`
+              `side-navigation__link ${isActive ? "side-navigation__link_active" : ""}`
             }
           >
             Сохраненные фильмы

@@ -3,10 +3,8 @@ import { currentDate } from "../../utils/constants";
 
 const Footer = () => {
   return (
-    <section className="footer">
-      <p className="footer__text">
-        Учебный проект Яндекс.Практикум х BeatFilm.
-      </p>
+    <footer className="footer">
+      <p className="footer__text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
       <div className="footer__container">
         <p className="footer__copyright">&copy; {currentDate}</p>
         <ul className="footer__list">
@@ -32,7 +30,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-    </section>
+    </footer>
   );
 };
 
