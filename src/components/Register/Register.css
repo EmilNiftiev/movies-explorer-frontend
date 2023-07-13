@@ -1,0 +1,125 @@
+.register {
+  max-width: 396px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+.register__title {
+  text-align: left;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+  margin: 40px 0 0;
+}
+
+.register__input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 0 20px 0;
+}
+
+.register__input-container:last-of-type {
+  margin: 0;
+}
+
+.register__input-caption {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #a0a0a0;
+  margin: 0 0 10px;
+}
+
+.register__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto 0;
+}
+
+.register__form-fields {
+  margin: 0;
+  border: none;
+  font-size: 0;
+}
+
+.register__form-input {
+  border: none;
+  text-align: left;
+  background: #2f2f2f;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 16px;
+  padding: 15px;
+}
+
+.register__form-input {
+  color: #fff;
+}
+
+.register__form-input::placeholder {
+  color: #8b8b8b;
+}
+
+.register__link-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.register__link {
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4285f4;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.register__link:hover {
+  opacity: 0.7;
+}
+
+.register__link-text {
+  font-size: 14px;
+  line-height: 17px;
+  color: #8b8b8b;
+  margin: 0 6px 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  .register {
+    padding: 232px 0;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .register {
+    padding: 56px 0 29px;
+    align-items: center;
+  }
+  .register__title {
+    margin-top: 50px;
+  }
+  .register__form {
+    margin-top: 80px;
+    align-items: center;
+    max-width: 260px;
+  }
+  .register__form-fields {
+    width: 100%;
+  }
+  .register__link-container {
+    margin-top: 13px;
+  }
+  .register__link-text {
+    font-size: 12px;
+    margin-right: 8px;
+  }
+  .register__link {
+    font-size: 12px;
+  }
+}

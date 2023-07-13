@@ -1,0 +1,212 @@
+.button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.button_type_login {
+  margin-left: 30px;
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #3ddc84;
+  border-radius: 3px;
+  color: #000;
+}
+
+.button_type_account {
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  background-color: #313131;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.button_type_search {
+  display: block;
+  width: 34px;
+  height: 34px;
+  background-color: #4285f4;
+  background-image: url("../../images/button/search-button.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 48px;
+  color: #fff;
+}
+
+.button_type_more {
+  max-width: 1140px;
+  width: 100%;
+  border-radius: 6px;
+  margin: 60px auto 71px;
+  padding: 11px 0 9px;
+  background-color: #2f2f2f;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.button_type_movies-like {
+  background-image: url("../../images/button/movies-like-button-image.svg");
+  width: 14px;
+  height: 12px;
+  object-fit: cover;
+  background-color: #2f2f2f;
+}
+
+.button_type_movies-like_active {
+  background-image: url("../../images/button/movies-like-button-active.svg");
+}
+
+.button_type_delete-movie {
+  width: 14px;
+  height: 12px;
+  background: inherit;
+  color: #fff;
+  background-image: url(../../images/button/delete-movie.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+}
+
+.button_type_form-login {
+  width: 100%;
+  border-radius: 3px;
+  background: #4285f4;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 179px;
+  padding: 13px 0 15px;
+}
+
+.button_type_form-register {
+  width: 100%;
+  border-radius: 3px;
+  background: #4285f4;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 91px;
+  padding: 13px 0 15px;
+}
+
+.button_type_profile-edit {
+  color: #fff;
+  background-color: inherit;
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 204px;
+}
+
+.button_type_logout {
+  color: #ee3465;
+  background-color: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 16px;
+}
+
+.button_type_close-menu {
+  width: 22px;
+  height: 22px;
+  background-image: url(../../images/button/closeBtn.svg);
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  position: absolute;
+  top: 27px;
+  right: 27px;
+}
+
+.button_type_burger-button {
+  width: 44px;
+  height: 44px;
+  background-image: url(../../images/button/burger-menu-btn.svg);
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .button_type_burger-button {
+    display: block;
+  }
+  .button_type_more {
+    margin: 80px auto 51px;
+  }
+  .button_type_profile-edit {
+    margin-top: 196px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .button_type_login {
+    margin-left: 15px;
+    padding: 5px 12px;
+    font-size: 10px;
+  }
+  .button_type_close-menu {
+    top: 18px;
+    right: 18px;
+  }
+  .button_type_movies-like {
+    position: absolute;
+    top: 16px;
+    right: -44px;
+  }
+  .button_type_burger-button {
+    width: 22px;
+    height: 24px;
+    margin-right: 9px;
+  }
+  .button_type_more {
+    margin: 72px 0;
+  }
+  .button_type_delete-movie {
+    position: absolute;
+    top: 16px;
+    right: -44px;
+  }
+  .button_type_profile-edit {
+    margin-top: 363px;
+    font-size: 12px;
+  }
+  .button_type_logout {
+    font-size: 12px;
+    margin-top: 15px;
+  }
+  .button_type_form-register {
+    max-width: 260px;
+    font-size: 12px;
+    margin-top: 179px;
+    padding: 14px 0;
+  }
+  .button_type_form-login {
+    max-width: 260px;
+    font-size: 12px;
+    margin-top: 267px;
+    padding: 14px 0;
+  }
+}

@@ -1,0 +1,28 @@
+.technology-stack {
+  display: flex;
+  width: 90px;
+  height: 60px;
+  border-radius: 10px;
+  background: #303030;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.04em;
+  transition: opacity 0.3s ease-in;
+  cursor: pointer;
+}
+
+.technology-stack:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+  .technology-stack {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

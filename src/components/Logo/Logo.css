@@ -1,0 +1,16 @@
+.logo {
+  display: block;
+  border-radius: 20px;
+  transition: opacity 0.3s ease-in;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo__image {
+  display: block;
+  width: 38px;
+  height: 38px;
+  border-radius: 20px;
+}
