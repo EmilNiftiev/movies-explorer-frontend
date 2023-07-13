@@ -9,7 +9,7 @@ import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import SideMenu from "../SideMenu/SideMenu";
-// test
+
 const App = () => {
   const [isLoggedIn] = useState(true);
   // ------------------- Управление боковым меню -------------------
@@ -43,17 +43,23 @@ const App = () => {
         />
         <Route
           path="/movies"
-          element={<Movies isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
+          element={
+            <Movies isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
+          }
         />
         <Route
           path="/saved-movies"
-          element={<SavedMovies isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
+          element={
+            <SavedMovies isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
+          }
         />
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route
           path="/profile"
-          element={<Profile isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
+          element={
+            <Profile isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
+          }
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
