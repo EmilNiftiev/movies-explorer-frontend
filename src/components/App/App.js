@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -9,9 +10,11 @@ import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import SideMenu from "../SideMenu/SideMenu";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 const App = () => {
   const [isLoggedIn] = useState(true);
+  const [currentUser, setCurrentUser] = useState({});
   // ------------------- Управление боковым меню -------------------
   const [isSideMenu, setIsSideMenu] = useState(false);
 
@@ -30,40 +33,55 @@ const App = () => {
   };
   // ------------------------------------------------------------------
   return (
-    <section className="app">
-      <SideMenu
-        isLoggedIn={isLoggedIn}
-        isSideMenu={isSideMenu}
-        closeSideMenu={closeSideMenu}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
+    <CurrentUserContext.Provider value={currentUser}>
+      <section className="app">
+        <SideMenu
+          isLoggedIn={isLoggedIn}
+          isSideMenu={isSideMenu}
+          closeSideMenu={closeSideMenu}
         />
-        <Route
-          path="/movies"
-          element={
-            <Movies isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
-          }
-        />
-        <Route
-          path="/saved-movies"
-          element={
-            <SavedMovies isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
-          }
-        />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route
-          path="/profile"
-          element={
-            <Profile isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
-          }
-        />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </section>
+        <Routes>
+          <Route
+            path="/"
+            element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
+          />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRoute
+                element={Movies}
+                isLoggedIn={isLoggedIn}
+                openSideMenu={openSideMenu}
+              />
+            }
+          />
+          <Route
+            path="/saved-movies"
+            element={
+              <ProtectedRoute
+                element={SavedMovies}
+                isLoggedIn={isLoggedIn}
+                openSideMenu={openSideMenu}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute
+                element={Profile}
+                isLoggedIn={isLoggedIn}
+                openSideMenu={openSideMenu}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </section>
+    </CurrentUserContext.Provider>
   );
 };
 
