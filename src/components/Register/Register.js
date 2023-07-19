@@ -3,6 +3,13 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import {
+  nameMinLength,
+  nameMaxLength,
+  nameRegex,
+  emailRegex,
+  passwordMinLength,
+} from "../../utils/constants";
 
 const Register = ({ setIsLoaderVisible }) => {
   const {
@@ -33,20 +40,21 @@ const Register = ({ setIsLoaderVisible }) => {
               {...register("firstName", {
                 required: "Поле должно быть заполнено",
                 minLength: {
-                  value: 2,
+                  value: nameMinLength,
                   message: "Минимальная длина имени - 2 символа",
                 },
                 maxLength: {
-                  value: 30,
+                  value: nameMaxLength,
                   message: "Максимальная длина имени - 30 символов",
                 },
+                pattern: nameRegex,
               })}
             />
           </div>
           <div className="register__errors-container">
             {errors?.firstName && (
               <p className="register__error-message">
-                {errors?.firstName?.message || "Error"}
+                {errors?.firstName?.message || "Имя содержит недопустимые символы"}
               </p>
             )}
           </div>
@@ -60,8 +68,7 @@ const Register = ({ setIsLoaderVisible }) => {
               placeholder="Укажите e-mail адрес"
               {...register("email", {
                 required: true,
-                pattern:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                pattern: emailRegex,
               })}
             />
           </div>
@@ -81,7 +88,7 @@ const Register = ({ setIsLoaderVisible }) => {
               {...register("password", {
                 required: "Поле должно быть заполнено",
                 minLength: {
-                  value: 8,
+                  value: passwordMinLength,
                   message: "Пароль должен быть не короче 8 символов",
                 },
               })}

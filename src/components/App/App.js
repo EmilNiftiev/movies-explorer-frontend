@@ -14,7 +14,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Preloader from "../Preloader/Preloader";
 
 const App = () => {
-  const [isLoggedIn] = useState(true);
+  const [isLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
   // ------------------- Управление боковым меню -------------------

@@ -40,13 +40,14 @@ function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible }) {
                     value: 30,
                     message: "Максимальная длина имени - 30 символов",
                   },
+                  pattern: /^[а-яА-Яa-zA-ZЁёәіңғүұқөһӘІҢҒҮҰҚӨҺ\-\s]*$/,
                 })}
               />
             </div>
             <div className="profile__errors-container">
               {errors?.firstName && (
                 <p className="profile__error-message">
-                  {errors?.firstName?.message || "Error"}
+                  {errors?.firstName?.message || "Имя содержит недопустимые символы"}
                 </p>
               )}
             </div>
