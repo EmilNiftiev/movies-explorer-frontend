@@ -15,6 +15,11 @@
   opacity: 0.8;
 }
 
+.button_disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
 .button_type_login {
   margin-left: 30px;
   padding: 8px 20px;
@@ -92,7 +97,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  margin-top: 179px;
+  margin-top: 159px;
   padding: 13px 0 15px;
 }
 
@@ -104,7 +109,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  margin-top: 91px;
+  margin-top: 71px;
   padding: 13px 0 15px;
 }
 
@@ -113,7 +118,7 @@
   background-color: inherit;
   font-size: 13px;
   line-height: 16px;
-  margin-top: 204px;
+  margin-top: 192px;
 }
 
 .button_type_logout {
@@ -157,7 +162,7 @@
     margin: 80px auto 51px;
   }
   .button_type_profile-edit {
-    margin-top: 196px;
+    margin-top: 184px;
   }
 }
 
@@ -190,7 +195,7 @@
     right: -44px;
   }
   .button_type_profile-edit {
-    margin-top: 363px;
+    margin-top: 351px;
     font-size: 12px;
   }
   .button_type_logout {
@@ -200,13 +205,13 @@
   .button_type_form-register {
     max-width: 260px;
     font-size: 12px;
-    margin-top: 179px;
+    margin-top: 159px;
     padding: 14px 0;
   }
   .button_type_form-login {
     max-width: 260px;
     font-size: 12px;
-    margin-top: 267px;
+    margin-top: 247px;
     padding: 14px 0;
   }
 }

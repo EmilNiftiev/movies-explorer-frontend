@@ -11,10 +11,12 @@ import Profile from "../Profile/Profile";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import SideMenu from "../SideMenu/SideMenu";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Preloader from "../Preloader/Preloader";
 
 const App = () => {
   const [isLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
+  const [isLoaderVisible, setIsLoaderVisible] = useState(false);
   // ------------------- Управление боковым меню -------------------
   const [isSideMenu, setIsSideMenu] = useState(false);
 
@@ -34,6 +36,7 @@ const App = () => {
   // ------------------------------------------------------------------
   return (
     <CurrentUserContext.Provider value={currentUser}>
+      <Preloader isLoaderVisible={isLoaderVisible} />
       <section className="app">
         <SideMenu
           isLoggedIn={isLoggedIn}
@@ -45,8 +48,14 @@ const App = () => {
             path="/"
             element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
           />
-          <Route path="/signin" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
+          <Route
+            path="/signin"
+            element={<Login setIsLoaderVisible={setIsLoaderVisible} />}
+          />
+          <Route
+            path="/signup"
+            element={<Register setIsLoaderVisible={setIsLoaderVisible} />}
+          />
           <Route
             path="/movies"
             element={
@@ -75,6 +84,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 openSideMenu={openSideMenu}
                 setCurrentUser={setCurrentUser}
+                setIsLoaderVisible={setIsLoaderVisible}
               />
             }
           />

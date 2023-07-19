@@ -1,13 +1,13 @@
-import './Preloader.css'
+import "./Preloader.css";
 
-const Preloader = () => {
-    return (
-        <div className="preloader preloader_visible">
-            <div className="preloader__container">
-                <span className="preloader__round"></span>
-            </div>
-        </div>
-    )
+const Preloader = ({ isLoaderVisible }) => {
+  return (
+    <div className={`preloader ${isLoaderVisible && "preloader_visible"}`}>
+      <div className="preloader__container">
+        <span className="preloader__round"></span>
+      </div>
+    </div>
+  );
 };
 
-export default Preloader
+export default Preloader;
