@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -12,9 +12,12 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import SideMenu from "../SideMenu/SideMenu";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Preloader from "../Preloader/Preloader";
+import TooltipPopup from "../TooltipPopup/TooltipPopup";
 
 const App = () => {
-  const [isLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("loggedIn") || false
+  );
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
   // ------------------- Управление боковым меню -------------------
@@ -34,10 +37,34 @@ const App = () => {
     }
   };
   // ------------------------------------------------------------------
+  // ------------------- Состояние тултип-попапа ----------------------
+  const [tooltipState, setTooltipState] = useState({
+    tooltipVisible: false,
+    isSuccessful: false,
+    text: "",
+  });
+  // ------------------------------------------------------------------
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    localStorage.setItem("loggedIn", true);
+    navigate("/movies");
+  };
+  const logOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("loggedIn");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Preloader isLoaderVisible={isLoaderVisible} />
       <section className="app">
+        <Preloader isLoaderVisible={isLoaderVisible} />
+        <TooltipPopup
+          tooltipState={tooltipState}
+          setTooltipState={setTooltipState}
+        />
         <SideMenu
           isLoggedIn={isLoggedIn}
           isSideMenu={isSideMenu}
@@ -46,15 +73,29 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
+            element={
+              <Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
+            }
           />
           <Route
             path="/signin"
-            element={<Login setIsLoaderVisible={setIsLoaderVisible} />}
+            element={
+              <Login
+                setIsLoaderVisible={setIsLoaderVisible}
+                handleLogin={handleLogin}
+                setTooltipState={setTooltipState}
+              />
+            }
           />
           <Route
             path="/signup"
-            element={<Register setIsLoaderVisible={setIsLoaderVisible} />}
+            element={
+              <Register
+                setIsLoaderVisible={setIsLoaderVisible}
+                handleLogin={handleLogin}
+                setTooltipState={setTooltipState}
+              />
+            }
           />
           <Route
             path="/movies"
@@ -63,6 +104,7 @@ const App = () => {
                 element={Movies}
                 isLoggedIn={isLoggedIn}
                 openSideMenu={openSideMenu}
+                setTooltipState={setTooltipState}
               />
             }
           />
@@ -73,6 +115,7 @@ const App = () => {
                 element={SavedMovies}
                 isLoggedIn={isLoggedIn}
                 openSideMenu={openSideMenu}
+                setTooltipState={setTooltipState}
               />
             }
           />
@@ -85,6 +128,8 @@ const App = () => {
                 openSideMenu={openSideMenu}
                 setCurrentUser={setCurrentUser}
                 setIsLoaderVisible={setIsLoaderVisible}
+                setTooltipState={setTooltipState}
+                logOut={logOut}
               />
             }
           />

@@ -154,6 +154,20 @@
   display: none;
 }
 
+.button_type_close-popup {
+  width: 22px;
+  height: 22px;
+  color: #000;
+  background-image: url(../../images/button/popup-close-icon.svg);
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .button_type_burger-button {
     display: block;

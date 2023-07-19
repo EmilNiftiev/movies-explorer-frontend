@@ -3,24 +3,53 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { emailRegex, passwordMinLength } from "../../utils/constants";
+import mainApi from "../../utils/MainApi";
 
-const Login = ({ setIsLoaderVisible }) => {
+const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
     reset,
+    getValues,
   } = useForm({ mode: "onChange" });
-  const onSumbit = (data) => {
+  const onSumbit = () => {
     setIsLoaderVisible(true);
-    alert(JSON.stringify(data));
-    reset();
+    // console.log(JSON.stringify(data.email));
+    mainApi
+      .login(getValues("password"), getValues("email"))
+      .then((data) => {
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: true,
+          text: "Авторизация прошла успешно!",
+        });
+        localStorage.setItem("token", data.token);
+        handleLogin();
+      })
+      .catch((err) => {
+        console.log(err);
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: false,
+          text: "Неправильная почта или пароль!",
+        });
+      })
+      .finally(() => {
+        setIsLoaderVisible(false);
+        reset();
+      });
   };
   return (
     <section className="login">
       <Logo />
       <h3 className="login__title">Рады видеть!</h3>
-      <form name="login" className="login__form" onSubmit={handleSubmit(onSumbit)}>
+      <form
+        name="login"
+        className="login__form"
+        onSubmit={handleSubmit(onSumbit)}
+      >
         <fieldset className="login__form-fields">
           <div className="login__input-container">
             <label className="login__input-caption">E-mail</label>
@@ -32,8 +61,7 @@ const Login = ({ setIsLoaderVisible }) => {
               placeholder="Укажите e-mail адрес"
               {...register("email", {
                 required: true,
-                pattern:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                pattern: emailRegex,
               })}
             />
           </div>
@@ -53,7 +81,7 @@ const Login = ({ setIsLoaderVisible }) => {
               {...register("password", {
                 required: "Поле должно быть заполнено",
                 minLength: {
-                  value: 8,
+                  value: passwordMinLength,
                   message: "Пароль должен быть не короче 8 символов",
                 },
               })}

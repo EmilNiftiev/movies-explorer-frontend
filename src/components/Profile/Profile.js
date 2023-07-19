@@ -2,8 +2,14 @@ import "./Profile.css";
 import Header from "../Header/Header";
 import Button from "../Button/Button";
 import { useForm } from "react-hook-form";
+import {
+  nameMinLength,
+  nameMaxLength,
+  nameRegex,
+  emailRegex,
+} from "../../utils/constants";
 
-function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible }) {
+function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible, logOut }) {
   const {
     register,
     formState: { errors, isValid },
@@ -20,7 +26,11 @@ function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible }) {
       <Header isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
       <section className="profile">
         <h3 className="profile__title">Привет, Виталий!</h3>
-        <form name="profile" className="profile__form" onSubmit={handleSubmit(onSumbit)}>
+        <form
+          name="profile"
+          className="profile__form"
+          onSubmit={handleSubmit(onSumbit)}
+        >
           <fieldset className="profile__form-fieldset">
             <div className="profile__input-container">
               <label className="profile__input-caption">Имя</label>
@@ -33,21 +43,22 @@ function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible }) {
                 {...register("firstName", {
                   required: "Поле должно быть заполнено",
                   minLength: {
-                    value: 2,
+                    value: nameMinLength,
                     message: "Минимальная длина имени - 2 символа",
                   },
                   maxLength: {
-                    value: 30,
+                    value: nameMaxLength,
                     message: "Максимальная длина имени - 30 символов",
                   },
-                  pattern: /^[а-яА-Яa-zA-ZЁёәіңғүұқөһӘІҢҒҮҰҚӨҺ\-\s]*$/,
+                  pattern: nameRegex,
                 })}
               />
             </div>
             <div className="profile__errors-container">
               {errors?.firstName && (
                 <p className="profile__error-message">
-                  {errors?.firstName?.message || "Имя содержит недопустимые символы"}
+                  {errors?.firstName?.message ||
+                    "Имя содержит недопустимые символы"}
                 </p>
               )}
             </div>
@@ -61,15 +72,16 @@ function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible }) {
                 id="email-input"
                 {...register("email", {
                   required: true,
-                  pattern:
-                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  pattern: emailRegex,
                 })}
               />
             </div>
           </fieldset>
           <div className="profile__errors-container">
             {errors?.email && (
-              <p className="profile__error-message">Введён некорректный email</p>
+              <p className="profile__error-message">
+                Введён некорректный email
+              </p>
             )}
           </div>
           <Button
@@ -79,7 +91,11 @@ function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible }) {
             buttonType="submit"
           />
         </form>
-        <Button text={"Выйти из аккаунта"} type={"profile-logout"} />
+        <Button
+          onClick={logOut}
+          text={"Выйти из аккаунта"}
+          type={"profile-logout"}
+        />
       </section>
     </>
   );
