@@ -15,9 +15,7 @@ import Preloader from "../Preloader/Preloader";
 import TooltipPopup from "../TooltipPopup/TooltipPopup";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("loggedIn") || false
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("loggedIn") || false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
   // ------------------- Управление боковым меню -------------------
@@ -61,10 +59,7 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <section className="app">
         <Preloader isLoaderVisible={isLoaderVisible} />
-        <TooltipPopup
-          tooltipState={tooltipState}
-          setTooltipState={setTooltipState}
-        />
+        <TooltipPopup tooltipState={tooltipState} setTooltipState={setTooltipState} />
         <SideMenu
           isLoggedIn={isLoggedIn}
           isSideMenu={isSideMenu}
@@ -73,9 +68,7 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={
-              <Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
-            }
+            element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
           />
           <Route
             path="/signin"

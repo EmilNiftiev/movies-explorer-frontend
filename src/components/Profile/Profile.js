@@ -8,29 +8,48 @@ import {
   nameRegex,
   emailRegex,
 } from "../../utils/constants";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import mainApi from "../../utils/MainApi";
 
-function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible, logOut }) {
+function Profile({
+  isLoggedIn,
+  openSideMenu,
+  setIsLoaderVisible,
+  logOut,
+  setCurrentUser,
+  setTooltipState,
+}) {
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
     reset,
+    getValues,
   } = useForm({ mode: "onChange" });
-  const onSumbit = (data) => {
+
+  const currentUser = useContext(CurrentUserContext);
+
+  const onSumbit = () => {
     setIsLoaderVisible(true);
-    alert(JSON.stringify(data));
-    reset();
+    mainApi
+      .setUserInfo(getValues("firstName"), getValues("email"))
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoaderVisible(false);
+        reset();
+      });
   };
+
   return (
     <>
       <Header isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
       <section className="profile">
-        <h3 className="profile__title">Привет, Виталий!</h3>
-        <form
-          name="profile"
-          className="profile__form"
-          onSubmit={handleSubmit(onSumbit)}
-        >
+        <h3 className="profile__title">{`Привет, ${currentUser.name}!`}</h3>
+        <form name="profile" className="profile__form" onSubmit={handleSubmit(onSumbit)}>
           <fieldset className="profile__form-fieldset">
             <div className="profile__input-container">
               <label className="profile__input-caption">Имя</label>
@@ -57,8 +76,7 @@ function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible, logOut }) {
             <div className="profile__errors-container">
               {errors?.firstName && (
                 <p className="profile__error-message">
-                  {errors?.firstName?.message ||
-                    "Имя содержит недопустимые символы"}
+                  {errors?.firstName?.message || "Имя содержит недопустимые символы"}
                 </p>
               )}
             </div>
@@ -79,9 +97,7 @@ function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible, logOut }) {
           </fieldset>
           <div className="profile__errors-container">
             {errors?.email && (
-              <p className="profile__error-message">
-                Введён некорректный email
-              </p>
+              <p className="profile__error-message">Введён некорректный email</p>
             )}
           </div>
           <Button
@@ -91,11 +107,7 @@ function Profile({ isLoggedIn, openSideMenu, setIsLoaderVisible, logOut }) {
             buttonType="submit"
           />
         </form>
-        <Button
-          onClick={logOut}
-          text={"Выйти из аккаунта"}
-          type={"profile-logout"}
-        />
+        <Button onClick={logOut} text={"Выйти из аккаунта"} type={"profile-logout"} />
       </section>
     </>
   );

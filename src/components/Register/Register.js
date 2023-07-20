@@ -23,34 +23,26 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
   const onSumbit = () => {
     setIsLoaderVisible(true);
     mainApi
-      .register(
-        getValues("firstName"),
-        getValues("email"),
-        getValues("password")
-      )
-      .then((res) => {
-        if (!res.error) {
-          mainApi
-            .login(getValues("password"), getValues("email"))
-            .then((data) => {
-              if (data.token) {
-                localStorage.setItem("token", data.token);
-                handleLogin();
-                setTooltipState({
-                  isVisible: true,
-                  isSuccessful: true,
-                  text: "Вы успешно зарегистрировались!",
-                });
-              }
+      .register(getValues("firstName"), getValues("email"), getValues("password"))
+      .then(() => {
+        mainApi.login(getValues("password"), getValues("email")).then((data) => {
+          if (data.token) {
+            localStorage.setItem("token", data.token);
+            handleLogin();
+            setTooltipState({
+              isVisible: true,
+              isSuccessful: true,
+              text: "Вы успешно зарегистрировались!",
             });
-        }
+          }
+        });
       })
       .catch((err) => {
         console.log(err);
         setTooltipState({
           isVisible: true,
           isSuccessful: false,
-          text: "Неправильная почта или пароль!",
+          text: "При регистрации указан email, который уже существует на сервере!",
         });
       })
       .finally(() => {
@@ -62,11 +54,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
     <section className="register">
       <Logo />
       <h3 className="register__title">Добро пожаловать!</h3>
-      <form
-        name="register"
-        className="register__form"
-        onSubmit={handleSubmit(onSumbit)}
-      >
+      <form name="register" className="register__form" onSubmit={handleSubmit(onSumbit)}>
         <fieldset className="register__form-fields">
           <div className="register__input-container">
             <label className="register__input-caption">Имя</label>
@@ -93,8 +81,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
           <div className="register__errors-container">
             {errors?.firstName && (
               <p className="register__error-message">
-                {errors?.firstName?.message ||
-                  "Имя содержит недопустимые символы"}
+                {errors?.firstName?.message || "Имя содержит недопустимые символы"}
               </p>
             )}
           </div>
@@ -114,9 +101,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
           </div>
           <div className="register__errors-container">
             {errors?.email && (
-              <p className="register__error-message">
-                Введён некорректный email
-              </p>
+              <p className="register__error-message">Введён некорректный email</p>
             )}
           </div>
           <div className="register__input-container">

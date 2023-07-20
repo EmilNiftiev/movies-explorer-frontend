@@ -45,11 +45,7 @@ const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
     <section className="login">
       <Logo />
       <h3 className="login__title">Рады видеть!</h3>
-      <form
-        name="login"
-        className="login__form"
-        onSubmit={handleSubmit(onSumbit)}
-      >
+      <form name="login" className="login__form" onSubmit={handleSubmit(onSumbit)}>
         <fieldset className="login__form-fields">
           <div className="login__input-container">
             <label className="login__input-caption">E-mail</label>
