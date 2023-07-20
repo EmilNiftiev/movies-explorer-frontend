@@ -36,8 +36,20 @@ function Profile({
       .setUserInfo(getValues("firstName"), getValues("email"))
       .then((res) => {
         setCurrentUser(res);
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: true,
+          text: "Данные профиля изменены!",
+        });
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err);
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: false,
+          text: "Что-то пошло не так...",
+        });
+      })
       .finally(() => {
         setIsLoaderVisible(false);
         reset();

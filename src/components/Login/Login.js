@@ -14,6 +14,7 @@ const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
     reset,
     getValues,
   } = useForm({ mode: "onChange" });
+
   const onSumbit = () => {
     setIsLoaderVisible(true);
     // console.log(JSON.stringify(data.email));
@@ -41,6 +42,7 @@ const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
         reset();
       });
   };
+
   return (
     <section className="login">
       <Logo />

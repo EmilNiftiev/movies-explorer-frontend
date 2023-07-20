@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Main from "../Main/Main";
@@ -13,6 +13,7 @@ import SideMenu from "../SideMenu/SideMenu";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Preloader from "../Preloader/Preloader";
 import TooltipPopup from "../TooltipPopup/TooltipPopup";
+import mainApi from "../../utils/MainApi";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("loggedIn") || false);
@@ -37,7 +38,7 @@ const App = () => {
   // ------------------------------------------------------------------
   // ------------------- Состояние тултип-попапа ----------------------
   const [tooltipState, setTooltipState] = useState({
-    tooltipVisible: false,
+    isVisible: false,
     isSuccessful: false,
     text: "",
   });
@@ -45,6 +46,7 @@ const App = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
+    checkToken();
     setIsLoggedIn(true);
     localStorage.setItem("loggedIn", true);
     navigate("/movies");
@@ -55,6 +57,31 @@ const App = () => {
     setIsLoggedIn(false);
     navigate("/");
   };
+
+  const checkToken = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      mainApi.currentToken = token;
+      mainApi
+        .checkToken(token)
+        .then((res) => {
+          if (!res.message) {
+            setIsLoaderVisible(true);
+            setCurrentUser(res);
+            setIsLoggedIn(true);
+          }
+        })
+        .catch((res) => console.log(res))
+        .finally(() => {
+          setIsLoaderVisible(false);
+        });
+    }
+  };
+
+  useEffect(() => {
+    checkToken();
+  }, []);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <section className="app">
