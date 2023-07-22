@@ -3,25 +3,29 @@ import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Button from "../Button/Button";
 
-const MoviesCardList = () => {
+const MoviesCardList = ({
+  foundMovies,
+  setIsLoaderVisible,
+  setTooltipState,
+}) => {
   const location = useLocation();
 
   return (
     <section>
       {location.pathname === "/movies" && (
         <ul className="movies-card-list">
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
+          {foundMovies?.slice().map((movie) => (
+            <MoviesCard
+              setIsLoaderVisible={setIsLoaderVisible}
+              key={movie.id}
+              movie={movie}
+            />
+          ))}
         </ul>
       )}
       {location.pathname === "/saved-movies" && (
         <ul className="movies-card-list">
-          <MoviesCard />
+          <MoviesCard setIsLoaderVisible={setIsLoaderVisible} />
           <MoviesCard />
           <MoviesCard />
           <MoviesCard />

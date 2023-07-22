@@ -150,6 +150,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 openSideMenu={openSideMenu}
                 setTooltipState={setTooltipState}
+                setIsLoaderVisible={setIsLoaderVisible}
               />
             }
           />

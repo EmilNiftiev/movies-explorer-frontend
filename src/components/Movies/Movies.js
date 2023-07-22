@@ -12,6 +12,7 @@ const Movies = ({
   movies,
   setMovies,
   setFoundMovies,
+  foundMovies,
 }) => {
   return (
     <>
@@ -24,7 +25,10 @@ const Movies = ({
           setMovies={setMovies}
           setFoundMovies={setFoundMovies}
         />
-        <MoviesCardList />
+        <MoviesCardList
+          foundMovies={foundMovies}
+          setIsLoaderVisible={setIsLoaderVisible}
+        />
       </section>
       <Footer />
     </>

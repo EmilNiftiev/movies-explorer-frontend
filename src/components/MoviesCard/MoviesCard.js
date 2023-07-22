@@ -1,18 +1,16 @@
 import "./MoviesCard.css";
 import Button from "../Button/Button";
-import moviesCover from "../../images/movies-card/33-slova-o-dizaine.png";
 import { useLocation } from "react-router-dom";
 
-const MoviesCard = () => {
+const MoviesCard = ({ movie, setIsLoaderVisible }) => {
   const location = useLocation();
   return (
     <section className="movies-card">
       <div className="movies-card__info">
-        <p className="movies-card__name">
-          33 слова о дизайне33 слова о дизайне33 слова о дизайне33 слова о
-          дизайне
-        </p>
-        <div className="movies-card__duration">1ч 42м</div>
+        <p className="movies-card__name">{movie.nameRU}</p>
+        <div className="movies-card__duration">{`${Math.floor(
+          movie.duration / 60
+        )}ч ${movie.duration % 60}м`}</div>
         {location.pathname === "/movies" ? (
           <Button text={""} type={"movies-like"} />
         ) : (
@@ -23,12 +21,12 @@ const MoviesCard = () => {
         className="movies-card__link"
         rel="noreferrer"
         target="_blank"
-        href="https://www.kinopoisk.ru/film/1302273/?utm_referrer=www.google.com"
+        href={movie.trailerLink}
       >
         <img
           className="movies-card__image"
-          src={moviesCover}
-          alt={"Изображение обложки фильма 33 слова о дизайне"}
+          src={`https://api.nomoreparties.co${movie.image.url}`}
+          alt={movie.nameRU}
         />
       </a>
     </section>
