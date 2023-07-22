@@ -50,15 +50,12 @@
 .register__form-input {
   border: none;
   text-align: left;
+  color: #fff;
   background: #2f2f2f;
   border-radius: 8px;
   font-size: 13px;
   line-height: 16px;
   padding: 15px;
-}
-
-.register__form-input {
-  color: #fff;
 }
 
 .register__form-input::placeholder {

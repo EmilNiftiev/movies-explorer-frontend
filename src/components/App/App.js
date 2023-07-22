@@ -16,7 +16,9 @@ import TooltipPopup from "../TooltipPopup/TooltipPopup";
 import mainApi from "../../utils/MainApi";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("loggedIn") || false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("loggedIn") || false
+  );
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
   // ------------------- Управление боковым меню -------------------
@@ -36,6 +38,8 @@ const App = () => {
     }
   };
   // ------------------------------------------------------------------
+  const [movies, setMovies] = useState([]);
+  const [foundMovies, setFoundMovies] = useState([]);
   // ------------------- Состояние тултип-попапа ----------------------
   const [tooltipState, setTooltipState] = useState({
     isVisible: false,
@@ -86,7 +90,10 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <section className="app">
         <Preloader isLoaderVisible={isLoaderVisible} />
-        <TooltipPopup tooltipState={tooltipState} setTooltipState={setTooltipState} />
+        <TooltipPopup
+          tooltipState={tooltipState}
+          setTooltipState={setTooltipState}
+        />
         <SideMenu
           isLoggedIn={isLoggedIn}
           isSideMenu={isSideMenu}
@@ -95,7 +102,9 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
+            element={
+              <Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
+            }
           />
           <Route
             path="/signin"
@@ -124,7 +133,12 @@ const App = () => {
                 element={Movies}
                 isLoggedIn={isLoggedIn}
                 openSideMenu={openSideMenu}
+                setIsLoaderVisible={setIsLoaderVisible}
                 setTooltipState={setTooltipState}
+                movies={movies}
+                setMovies={setMovies}
+                foundMovies={foundMovies}
+                setFoundMovies={setFoundMovies}
               />
             }
           />

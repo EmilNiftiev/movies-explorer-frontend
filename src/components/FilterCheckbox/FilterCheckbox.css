@@ -1,7 +1,7 @@
 .filter-checkbox {
   display: flex;
   align-items: center;
-  margin: 32px 0 0;
+  margin: 20px 0 0;
 }
 
 .filter-checkbox__checkbox {
@@ -56,7 +56,7 @@
 @media screen and (max-width: 768px) {
   .filter-checkbox {
     flex-direction: row-reverse;
-    margin-top: 30px;
+    margin-top: 18px;
   }
   .filter-checkbox__title {
     margin-right: 16px;
@@ -68,7 +68,7 @@
 
 @media screen and (max-width: 414px) {
   .filter-checkbox {
-    margin-top: 40px;
+    margin-top: 28px;
   }
   .filter-checkbox__switcher {
     margin-right: 72px;

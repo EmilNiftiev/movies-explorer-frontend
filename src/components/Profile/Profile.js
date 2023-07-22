@@ -20,20 +20,26 @@ function Profile({
   setCurrentUser,
   setTooltipState,
 }) {
-  const {
-    register,
-    formState: { errors, isValid },
-    handleSubmit,
-    reset,
-    getValues,
-  } = useForm({ mode: "onChange" });
-
   const currentUser = useContext(CurrentUserContext);
 
-  const onSumbit = () => {
+  const {
+    register,
+    formState: { errors, isValid, isDirty },
+    handleSubmit,
+  } = useForm({
+    mode: "onChange",
+    values: {
+      firstName: currentUser.name,
+      email: currentUser.email,
+    },
+  });
+
+  const isSubmitDisabled = !isValid || !isDirty;
+
+  const onSumbit = (formdata) => {
     setIsLoaderVisible(true);
     mainApi
-      .setUserInfo(getValues("firstName"), getValues("email"))
+      .setUserInfo(formdata.firstName, formdata.email)
       .then((res) => {
         setCurrentUser(res);
         setTooltipState({
@@ -52,7 +58,6 @@ function Profile({
       })
       .finally(() => {
         setIsLoaderVisible(false);
-        reset();
       });
   };
 
@@ -61,7 +66,11 @@ function Profile({
       <Header isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
       <section className="profile">
         <h3 className="profile__title">{`Привет, ${currentUser.name}!`}</h3>
-        <form name="profile" className="profile__form" onSubmit={handleSubmit(onSumbit)}>
+        <form
+          name="profile"
+          className="profile__form"
+          onSubmit={handleSubmit(onSumbit)}
+        >
           <fieldset className="profile__form-fieldset">
             <div className="profile__input-container">
               <label className="profile__input-caption">Имя</label>
@@ -88,7 +97,8 @@ function Profile({
             <div className="profile__errors-container">
               {errors?.firstName && (
                 <p className="profile__error-message">
-                  {errors?.firstName?.message || "Имя содержит недопустимые символы"}
+                  {errors?.firstName?.message ||
+                    "Имя содержит недопустимые символы"}
                 </p>
               )}
             </div>
@@ -109,17 +119,23 @@ function Profile({
           </fieldset>
           <div className="profile__errors-container">
             {errors?.email && (
-              <p className="profile__error-message">Введён некорректный email</p>
+              <p className="profile__error-message">
+                Введён некорректный email
+              </p>
             )}
           </div>
           <Button
-            additionalClass={!isValid && "button_disabled"}
+            additionalClass={isSubmitDisabled && "button_disabled"}
             text={"Редактировать"}
             type={"profile-edit"}
             buttonType="submit"
           />
         </form>
-        <Button onClick={logOut} text={"Выйти из аккаунта"} type={"profile-logout"} />
+        <Button
+          onClick={logOut}
+          text={"Выйти из аккаунта"}
+          type={"profile-logout"}
+        />
       </section>
     </>
   );
