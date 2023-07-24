@@ -7,6 +7,7 @@ import {
   nameMaxLength,
   nameRegex,
   emailRegex,
+  validationMessages,
 } from "../../utils/constants";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -66,11 +67,7 @@ function Profile({
       <Header isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
       <section className="profile">
         <h3 className="profile__title">{`Привет, ${currentUser.name}!`}</h3>
-        <form
-          name="profile"
-          className="profile__form"
-          onSubmit={handleSubmit(onSumbit)}
-        >
+        <form name="profile" className="profile__form" onSubmit={handleSubmit(onSumbit)}>
           <fieldset className="profile__form-fieldset">
             <div className="profile__input-container">
               <label className="profile__input-caption">Имя</label>
@@ -81,14 +78,14 @@ function Profile({
                 name="name"
                 id="name-input"
                 {...register("firstName", {
-                  required: "Поле должно быть заполнено",
+                  required: validationMessages.required,
                   minLength: {
                     value: nameMinLength,
-                    message: "Минимальная длина имени - 2 символа",
+                    message: validationMessages.nameMinLength,
                   },
                   maxLength: {
                     value: nameMaxLength,
-                    message: "Максимальная длина имени - 30 символов",
+                    message: validationMessages.nameMaxLength,
                   },
                   pattern: nameRegex,
                 })}
@@ -97,8 +94,7 @@ function Profile({
             <div className="profile__errors-container">
               {errors?.firstName && (
                 <p className="profile__error-message">
-                  {errors?.firstName?.message ||
-                    "Имя содержит недопустимые символы"}
+                  {errors?.firstName?.message || "Имя содержит недопустимые символы"}
                 </p>
               )}
             </div>
@@ -119,9 +115,7 @@ function Profile({
           </fieldset>
           <div className="profile__errors-container">
             {errors?.email && (
-              <p className="profile__error-message">
-                Введён некорректный email
-              </p>
+              <p className="profile__error-message">Введён некорректный email</p>
             )}
           </div>
           <Button
@@ -131,11 +125,7 @@ function Profile({
             buttonType="submit"
           />
         </form>
-        <Button
-          onClick={logOut}
-          text={"Выйти из аккаунта"}
-          type={"profile-logout"}
-        />
+        <Button onClick={logOut} text={"Выйти из аккаунта"} type={"profile-logout"} />
       </section>
     </>
   );

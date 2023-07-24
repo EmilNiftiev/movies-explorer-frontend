@@ -13,6 +13,8 @@ const Movies = ({
   setMovies,
   setFoundMovies,
   foundMovies,
+  isShortMovieChecked,
+  setIsShortMovieChecked,
 }) => {
   return (
     <>
@@ -24,10 +26,13 @@ const Movies = ({
           movies={movies}
           setMovies={setMovies}
           setFoundMovies={setFoundMovies}
+          isShortMovieChecked={isShortMovieChecked}
+          setIsShortMovieChecked={setIsShortMovieChecked}
         />
         <MoviesCardList
           foundMovies={foundMovies}
           setIsLoaderVisible={setIsLoaderVisible}
+          isShortMovieChecked={isShortMovieChecked}
         />
       </section>
       <Footer />

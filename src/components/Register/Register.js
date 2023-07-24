@@ -9,6 +9,7 @@ import {
   nameRegex,
   emailRegex,
   passwordMinLength,
+  validationMessages,
 } from "../../utils/constants";
 import mainApi from "../../utils/MainApi";
 
@@ -53,11 +54,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
     <section className="register">
       <Logo />
       <h3 className="register__title">Добро пожаловать!</h3>
-      <form
-        name="register"
-        className="register__form"
-        onSubmit={handleSubmit(onSumbit)}
-      >
+      <form name="register" className="register__form" onSubmit={handleSubmit(onSumbit)}>
         <fieldset className="register__form-fields">
           <div className="register__input-container">
             <label className="register__input-caption">Имя</label>
@@ -68,14 +65,14 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
               id="name-input"
               placeholder="Введите Ваше имя"
               {...register("firstName", {
-                required: "Поле должно быть заполнено",
+                required: validationMessages.required,
                 minLength: {
                   value: nameMinLength,
-                  message: "Минимальная длина имени - 2 символа",
+                  message: validationMessages.nameMinLength,
                 },
                 maxLength: {
                   value: nameMaxLength,
-                  message: "Максимальная длина имени - 30 символов",
+                  message: validationMessages.nameMaxLength,
                 },
                 pattern: nameRegex,
               })}
@@ -84,8 +81,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
           <div className="register__errors-container">
             {errors?.firstName && (
               <p className="register__error-message">
-                {errors?.firstName?.message ||
-                  "Имя содержит недопустимые символы"}
+                {errors?.firstName?.message || "Имя содержит недопустимые символы"}
               </p>
             )}
           </div>
@@ -105,9 +101,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
           </div>
           <div className="register__errors-container">
             {errors?.email && (
-              <p className="register__error-message">
-                Введён некорректный email
-              </p>
+              <p className="register__error-message">Введён некорректный email</p>
             )}
           </div>
           <div className="register__input-container">
@@ -119,10 +113,10 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
               id="password-input"
               placeholder="Введите пароль"
               {...register("password", {
-                required: "Поле должно быть заполнено",
+                required: validationMessages.required,
                 minLength: {
                   value: passwordMinLength,
-                  message: "Пароль должен быть не короче 8 символов",
+                  message: validationMessages.passwordMinLength,
                 },
               })}
             />
@@ -130,7 +124,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
           <div className="register__errors-container">
             {errors?.password && (
               <p className="register__error-message">
-                {errors?.password?.message || "Error"}
+                {errors?.password?.message || "Что-то пошло не так..."}
               </p>
             )}
           </div>

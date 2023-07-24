@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { emailRegex, passwordMinLength } from "../../utils/constants";
+import { emailRegex, passwordMinLength, validationMessages } from "../../utils/constants";
 import mainApi from "../../utils/MainApi";
 
 const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
@@ -46,11 +46,7 @@ const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
     <section className="login">
       <Logo />
       <h3 className="login__title">Рады видеть!</h3>
-      <form
-        name="login"
-        className="login__form"
-        onSubmit={handleSubmit(onSumbit)}
-      >
+      <form name="login" className="login__form" onSubmit={handleSubmit(onSumbit)}>
         <fieldset className="login__form-fields">
           <div className="login__input-container">
             <label className="login__input-caption">E-mail</label>
@@ -80,10 +76,10 @@ const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
               id="password-input"
               placeholder="Введите пароль"
               {...register("password", {
-                required: "Поле должно быть заполнено",
+                required: validationMessages.required,
                 minLength: {
                   value: passwordMinLength,
-                  message: "Пароль должен быть не короче 8 символов",
+                  message: validationMessages.passwordMinLength,
                 },
               })}
             />

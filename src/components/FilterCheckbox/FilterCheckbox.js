@@ -1,10 +1,23 @@
 import "./FilterCheckbox.css";
 
-const FilterCheckbox = () => {
+const FilterCheckbox = ({ isShortMovieChecked, setIsShortMovieChecked }) => {
+  // Обработчик чекбокса короткометражек
+  const handleCheckbox = () => {
+    setIsShortMovieChecked(!isShortMovieChecked);
+    localStorage.setItem("checkboxState", !isShortMovieChecked);
+  };
+
+  console.log(isShortMovieChecked);
+
   return (
     <section className="filter-checkbox">
       <label className="filter-checkbox__switcher">
-        <input className="filter-checkbox__checkbox" type="checkbox" />
+        <input
+          className="filter-checkbox__checkbox"
+          type="checkbox"
+          checked={isShortMovieChecked ? true : false}
+          onChange={handleCheckbox}
+        />
         <span className="filter-checkbox__container"></span>
       </label>
       <p className="filter-checkbox__title">Короткометражки</p>

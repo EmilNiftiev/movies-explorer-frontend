@@ -10,6 +10,8 @@ const SavedMovies = ({
   setIsLoaderVisible,
   setTooltipState,
   foundMovies,
+  isShortMovieChecked,
+  setIsShortMovieChecked,
 }) => {
   return (
     <>
@@ -18,8 +20,14 @@ const SavedMovies = ({
         <SearchForm
           setTooltipState={setTooltipState}
           setIsLoaderVisible={setIsLoaderVisible}
+          isShortMovieChecked={isShortMovieChecked}
+          setIsShortMovieChecked={setIsShortMovieChecked}
         />
-        <MoviesCardList foundMovies={foundMovies} />
+        <MoviesCardList
+          foundMovies={foundMovies}
+          isShortMovieChecked={isShortMovieChecked}
+          setIsLoaderVisible={setIsLoaderVisible}
+        />
       </section>
       <Footer />
     </>
