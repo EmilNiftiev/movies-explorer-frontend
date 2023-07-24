@@ -4,10 +4,10 @@ const FilterCheckbox = ({ isShortMovieChecked, setIsShortMovieChecked }) => {
   // Обработчик чекбокса короткометражек
   const handleCheckbox = () => {
     setIsShortMovieChecked(!isShortMovieChecked);
-    localStorage.setItem("checkboxState", !isShortMovieChecked);
+    // localStorage.setItem("checkboxState", !isShortMovieChecked);
   };
 
-  console.log(isShortMovieChecked);
+  console.log(`состояние чекбокса - ${isShortMovieChecked}`);
 
   return (
     <section className="filter-checkbox">
