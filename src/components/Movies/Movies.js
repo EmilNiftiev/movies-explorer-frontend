@@ -15,6 +15,8 @@ const Movies = ({
   foundMovies,
   isShortMovieChecked,
   setIsShortMovieChecked,
+  savedMovies,
+  setSavedMovies,
 }) => {
   return (
     <>
@@ -33,6 +35,8 @@ const Movies = ({
           foundMovies={foundMovies}
           setIsLoaderVisible={setIsLoaderVisible}
           isShortMovieChecked={isShortMovieChecked}
+          savedMovies={savedMovies}
+          setSavedMovies={setSavedMovies}
         />
       </section>
       <Footer />

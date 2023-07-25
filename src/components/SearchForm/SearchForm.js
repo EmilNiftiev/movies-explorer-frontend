@@ -38,9 +38,7 @@ const SearchForm = ({
         // Фильтруем по тексту в поиске
         const foundedMovies = movies.filter(
           (movie) =>
-            movie.nameRU
-              .toLowerCase()
-              .includes(searchdata.movieName.toLowerCase()) // movieName - значение инпута
+            movie.nameRU.toLowerCase().includes(searchdata.movieName.toLowerCase()) // movieName - значение инпута
         );
         // Если массив не пустой, то записываем найденное в лок. хран.
         if (foundedMovies.length !== 0) {

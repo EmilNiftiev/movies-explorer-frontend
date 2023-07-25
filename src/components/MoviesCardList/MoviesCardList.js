@@ -4,12 +4,18 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import Button from "../Button/Button";
 import { shortMovieDuration } from "../../utils/constants";
 
-const MoviesCardList = ({ foundMovies, setIsLoaderVisible, isShortMovieChecked }) => {
+const MoviesCardList = ({
+  foundMovies,
+  setIsLoaderVisible,
+  isShortMovieChecked,
+  savedMovies,
+  setSavedMovies,
+}) => {
   const location = useLocation();
 
   // Отображение результатов поиска в зависимости от чекбокса короткометражек
   const filteredMovies = isShortMovieChecked
-    ? foundMovies.filter((movie) => movie.duration < shortMovieDuration)
+    ? foundMovies.filter((movie) => movie.duration <= shortMovieDuration)
     : foundMovies;
 
   return (
@@ -19,6 +25,11 @@ const MoviesCardList = ({ foundMovies, setIsLoaderVisible, isShortMovieChecked }
         <p className="movies-not-found">Ничего не найдено</p>
       )}
       {/* --------------------------------------------------------------- */}
+      {/* На странице сохраненных фильмов - "У Вас нет сохранённых фильмов" */}
+      {location.pathname === "/saved-movies" && (
+        <p className="movies-not-found">У Вас нет сохранённых фильмов</p>
+      )}
+      {/* --------------------------------------------------------------- */}
       {location.pathname === "/movies" && (
         <ul className="movies-card-list">
           {filteredMovies?.slice().map((movie) => (
@@ -26,18 +37,18 @@ const MoviesCardList = ({ foundMovies, setIsLoaderVisible, isShortMovieChecked }
               setIsLoaderVisible={setIsLoaderVisible}
               key={movie.id}
               movie={movie}
+              savedMovies={savedMovies}
+              setSavedMovies={setSavedMovies}
             />
           ))}
         </ul>
       )}
       {location.pathname === "/saved-movies" && (
         <ul className="movies-card-list">
-          <MoviesCard setIsLoaderVisible={setIsLoaderVisible} />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
+          <MoviesCard
+            setIsLoaderVisible={setIsLoaderVisible}
+            setSavedMovies={setSavedMovies}
+          />
         </ul>
       )}
       {location.pathname === "/movies" && filteredMovies.length !== 0 && (

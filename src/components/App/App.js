@@ -38,6 +38,7 @@ const App = () => {
   // ------------------------------------------------------------------
   const [movies, setMovies] = useState([]);
   const [foundMovies, setFoundMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
   // ------------------- Состояние чекбокса ---------------------------
   // Сразу парсим, чтобы получать не строку, а булево значение
   const [isShortMovieChecked, setIsShortMovieChecked] = useState(
@@ -147,6 +148,8 @@ const App = () => {
                 setFoundMovies={setFoundMovies}
                 isShortMovieChecked={isShortMovieChecked}
                 setIsShortMovieChecked={setIsShortMovieChecked}
+                savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
               />
             }
           />
@@ -161,6 +164,8 @@ const App = () => {
                 setIsLoaderVisible={setIsLoaderVisible}
                 isShortMovieChecked={isShortMovieChecked}
                 setIsShortMovieChecked={setIsShortMovieChecked}
+                savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
               />
             }
           />
