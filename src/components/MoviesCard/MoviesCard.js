@@ -2,9 +2,18 @@ import "./MoviesCard.css";
 import Button from "../Button/Button";
 import { useLocation } from "react-router-dom";
 import mainApi from "../../utils/MainApi";
+// import { useContext } from "react";
+// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const MoviesCard = ({ movie, setIsLoaderVisible, savedMovies, setSavedMovies }) => {
+const MoviesCard = ({
+  movie,
+  setIsLoaderVisible,
+  savedMovies,
+  setSavedMovies,
+  saved,
+}) => {
   const location = useLocation();
+  // const currentUser = useContext(CurrentUserContext);
 
   // Сохранить фильм
   const handleLikeClick = () => {
@@ -34,17 +43,45 @@ const MoviesCard = ({ movie, setIsLoaderVisible, savedMovies, setSavedMovies }) 
       });
   };
 
+  // Удалить карточку
+  const handleButtonDeleteClick = () => {
+    setIsLoaderVisible(true);
+    const savedMovie = savedMovies?.find((item) => item.movieId === movie.id);
+    mainApi
+      .deleteMovie(savedMovie._id)
+      .then(() => {
+        setSavedMovies((newMoviesList) =>
+          newMoviesList.filter((m) => m.movieId !== movie.id)
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoaderVisible(false);
+      });
+  };
+
   return (
     <section className="movies-card">
       <div className="movies-card__info">
         <p className="movies-card__name">{movie.nameRU}</p>
-        <div className="movies-card__duration">{`${Math.floor(movie.duration / 60)}ч ${
-          movie.duration % 60
-        }м`}</div>
+        <div className="movies-card__duration">{`${Math.floor(
+          movie.duration / 60
+        )}ч ${movie.duration % 60}м`}</div>
         {location.pathname === "/movies" ? (
-          <Button text={""} type={"movies-like"} onClick={handleLikeClick} />
+          <Button
+            text={""}
+            type={"movies-like"}
+            additionalClass={saved ? "button_type_movies-like_active" : ""}
+            onClick={saved ? handleButtonDeleteClick : handleLikeClick}
+          />
         ) : (
-          <Button text={""} type={"delete-movie"} />
+          <Button
+            text={""}
+            type={"delete-movie"}
+            onClick={handleButtonDeleteClick}
+          />
         )}
       </div>
       <a

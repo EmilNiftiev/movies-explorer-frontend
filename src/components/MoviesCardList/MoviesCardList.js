@@ -18,6 +18,12 @@ const MoviesCardList = ({
     ? foundMovies.filter((movie) => movie.duration <= shortMovieDuration)
     : foundMovies;
 
+  function getSavedMovieCard(arr, movie) {
+    return arr.find((item) => {
+      return item.movieId === movie.id;
+    });
+  }
+
   return (
     <section>
       {/* До начала поиска отображаем надпись "ничего не найдено" */}
@@ -39,6 +45,7 @@ const MoviesCardList = ({
               movie={movie}
               savedMovies={savedMovies}
               setSavedMovies={setSavedMovies}
+              saved={getSavedMovieCard(savedMovies, movie)}
             />
           ))}
         </ul>

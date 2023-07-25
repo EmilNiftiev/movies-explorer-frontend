@@ -31,7 +31,7 @@ const Button = ({
       button
       ${type === "search" && `button_type_search ${additionalClass}`}
       ${type === "more" && "button_type_more"}
-      ${type === "movies-like" && "button_type_movies-like"}
+      ${type === "movies-like" && `button_type_movies-like ${additionalClass}`}
       ${type === "delete-movie" && "button_type_delete-movie"}
       ${type === "form-login" && `button_type_form-login ${additionalClass}`}
       ${
