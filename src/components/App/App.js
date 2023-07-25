@@ -38,7 +38,11 @@ const App = () => {
   // ------------------------------------------------------------------
   const [movies, setMovies] = useState([]);
   const [foundMovies, setFoundMovies] = useState([]);
-  const [isShortMovieChecked, setIsShortMovieChecked] = useState(false);
+  // ------------------- Состояние чекбокса ---------------------------
+  // Сразу парсим, чтобы получать не строку, а булево значение
+  const [isShortMovieChecked, setIsShortMovieChecked] = useState(
+    JSON.parse(localStorage.getItem("checkboxState")) || false
+  );
   // ------------------- Состояние тултип-попапа ----------------------
   const [tooltipState, setTooltipState] = useState({
     isVisible: false,
@@ -55,12 +59,12 @@ const App = () => {
     navigate("/movies");
   };
   const logOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("foundedMovies");
-    localStorage.removeItem("searchInputValue");
-    localStorage.removeItem("checkboxState");
-    // localStorage.clear();
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("loggedIn");
+    // localStorage.removeItem("foundedMovies");
+    // localStorage.removeItem("searchInputValue");
+    // localStorage.removeItem("checkboxState");
+    localStorage.clear();
     setIsLoggedIn(false);
     navigate("/");
   };
@@ -84,8 +88,7 @@ const App = () => {
         });
       // Если в локальном хранилище уже есть найденные фильмы, отображаем их
       if (localStorage.getItem("foundedMovies")) {
-        setFoundMovies(JSON.parse(localStorage.getItem("foundedMovies") || "[]"));
-        setIsShortMovieChecked(localStorage.getItem("checkboxState"));
+        setFoundMovies(JSON.parse(localStorage.getItem("foundedMovies")) || "[]");
       }
     }
   };

@@ -15,7 +15,7 @@ const FilterCheckbox = ({ isShortMovieChecked, setIsShortMovieChecked }) => {
         <input
           className="filter-checkbox__checkbox"
           type="checkbox"
-          checked={isShortMovieChecked ? true : false}
+          checked={isShortMovieChecked}
           onChange={handleCheckbox}
         />
         <span className="filter-checkbox__container"></span>
