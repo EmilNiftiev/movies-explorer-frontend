@@ -192,8 +192,8 @@
   }
   .button_type_movies-like {
     position: absolute;
-    top: 16px;
-    right: -44px;
+    top: 183px;
+    right: 16px;
   }
   .button_type_burger-button {
     width: 22px;
@@ -205,8 +205,8 @@
   }
   .button_type_delete-movie {
     position: absolute;
-    top: 16px;
-    right: -44px;
+    top: 183px;
+    right: 16px;
   }
   .button_type_profile-edit {
     margin-top: 351px;

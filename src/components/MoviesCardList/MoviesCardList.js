@@ -2,8 +2,12 @@ import "./MoviesCardList.css";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Button from "../Button/Button";
-import { shortMovieDuration } from "../../utils/constants";
-import { useContext } from "react";
+import {
+  shortMovieDuration,
+  moviesPerPage,
+  moviesToUpload,
+} from "../../utils/constants";
+import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const MoviesCardList = ({
@@ -13,6 +17,8 @@ const MoviesCardList = ({
   savedMovies,
   setSavedMovies,
   searchSavedMovies,
+  isMobile,
+  isTablet,
 }) => {
   const location = useLocation();
   const currentUser = useContext(CurrentUserContext);
@@ -48,6 +54,40 @@ const MoviesCardList = ({
         )
       : filteredSavedMovies;
 
+  // ------------------------- Настройка работы кнопки "Ещё" ----------------------
+  // Стейт количества отображаемых фильмов
+  const [displayedMoviesState, setDisplayedMoviesState] = useState({
+    showedMovies: moviesPerPage.onDesktop,
+    loadMoreMovies: moviesToUpload.onDesktop,
+  });
+  // Количество отображаемых карточек в зависимости от разрешения экрана
+  useEffect(() => {
+    if (isMobile) {
+      setDisplayedMoviesState({
+        showedMovies: moviesPerPage.onMobile,
+        loadMoreMovies: moviesToUpload.onMobile,
+      });
+    } else if (isTablet) {
+      setDisplayedMoviesState({
+        showedMovies: moviesPerPage.onTablet,
+        loadMoreMovies: moviesToUpload.onTablet,
+      });
+    } else {
+      setDisplayedMoviesState({
+        showedMovies: moviesPerPage.onDesktop,
+        loadMoreMovies: moviesToUpload.onDesktop,
+      });
+    }
+  }, [isTablet, isMobile]);
+  // Функция-обработчик кнопки "Ещё"
+  const handleUploadClick = () => {
+    setDisplayedMoviesState((prevState) => ({
+      ...prevState,
+      showedMovies:
+        displayedMoviesState.showedMovies + displayedMoviesState.loadMoreMovies,
+    }));
+  };
+
   return (
     <section>
       {/* До начала поиска отображаем надпись "ничего не найдено" */}
@@ -64,16 +104,18 @@ const MoviesCardList = ({
       {/* --------------------------------------------------------------- */}
       {location.pathname === "/movies" && (
         <ul className="movies-card-list">
-          {filteredMovies?.slice().map((movie) => (
-            <MoviesCard
-              setIsLoaderVisible={setIsLoaderVisible}
-              key={movie.id}
-              movie={movie}
-              savedMovies={savedMovies}
-              setSavedMovies={setSavedMovies}
-              saved={getSavedMovieCard(savedMovies, movie)}
-            />
-          ))}
+          {filteredMovies
+            ?.slice(0, displayedMoviesState.showedMovies)
+            .map((movie) => (
+              <MoviesCard
+                setIsLoaderVisible={setIsLoaderVisible}
+                key={movie.id}
+                movie={movie}
+                savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
+                saved={getSavedMovieCard(savedMovies, movie)}
+              />
+            ))}
         </ul>
       )}
       {location.pathname === "/saved-movies" && (
@@ -88,9 +130,10 @@ const MoviesCardList = ({
           ))}
         </ul>
       )}
-      {location.pathname === "/movies" && filteredMovies.length !== 0 && (
-        <Button text={"Ещё"} type={"more"} />
-      )}
+      {location.pathname === "/movies" &&
+        displayedMoviesState.showedMovies < filteredMovies.length && (
+          <Button text={"Ещё"} type={"more"} onClick={handleUploadClick} />
+        )}
     </section>
   );
 };

@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useMediaQuery } from "react-responsive";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -16,9 +17,16 @@ import TooltipPopup from "../TooltipPopup/TooltipPopup";
 import mainApi from "../../utils/MainApi";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("loggedIn") || false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("loggedIn") || false
+  );
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
+
+  // ------------------- Определяем тип устройства -------------------
+  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+
   // ------------------- Управление боковым меню -------------------
   const [isSideMenu, setIsSideMenu] = useState(false);
 
@@ -95,7 +103,9 @@ const App = () => {
         });
       // Если в локальном хранилище уже есть найденные фильмы, отображаем их
       if (localStorage.getItem("foundedMovies")) {
-        setFoundMovies(JSON.parse(localStorage.getItem("foundedMovies")) || "[]");
+        setFoundMovies(
+          JSON.parse(localStorage.getItem("foundedMovies")) || "[]"
+        );
       }
     }
   };
@@ -108,7 +118,10 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <section className="app">
         <Preloader isLoaderVisible={isLoaderVisible} />
-        <TooltipPopup tooltipState={tooltipState} setTooltipState={setTooltipState} />
+        <TooltipPopup
+          tooltipState={tooltipState}
+          setTooltipState={setTooltipState}
+        />
         <SideMenu
           isLoggedIn={isLoggedIn}
           isSideMenu={isSideMenu}
@@ -117,7 +130,9 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
+            element={
+              <Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
+            }
           />
           <Route
             path="/signin"
@@ -156,6 +171,8 @@ const App = () => {
                 setIsShortMovieChecked={setIsShortMovieChecked}
                 savedMovies={savedMovies}
                 setSavedMovies={setSavedMovies}
+                isMobile={isMobile}
+                isTablet={isTablet}
               />
             }
           />

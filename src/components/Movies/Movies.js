@@ -17,6 +17,8 @@ const Movies = ({
   setIsShortMovieChecked,
   savedMovies,
   setSavedMovies,
+  isMobile,
+  isTablet,
 }) => {
   return (
     <>
@@ -38,6 +40,8 @@ const Movies = ({
           isShortMovieChecked={isShortMovieChecked}
           savedMovies={savedMovies}
           setSavedMovies={setSavedMovies}
+          isMobile={isMobile}
+          isTablet={isTablet}
         />
       </section>
       <Footer />

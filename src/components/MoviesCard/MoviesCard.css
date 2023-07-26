@@ -76,7 +76,6 @@
   .movies-card__info {
     align-self: start;
     padding-left: 12px;
-    position: relative;
   }
   .movies-card__name {
     max-width: 228px;
