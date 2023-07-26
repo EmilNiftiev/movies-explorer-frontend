@@ -66,6 +66,7 @@ const App = () => {
     // localStorage.removeItem("searchInputValue");
     // localStorage.removeItem("checkboxState");
     localStorage.clear();
+    setFoundMovies([]);
     setIsLoggedIn(false);
     navigate("/");
   };
