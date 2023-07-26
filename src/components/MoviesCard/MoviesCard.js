@@ -15,7 +15,7 @@ const MoviesCard = ({
   const location = useLocation();
   // const currentUser = useContext(CurrentUserContext);
 
-  // Сохранить фильм
+  // Поставить лайк (Сохранить фильм)
   const handleLikeClick = () => {
     setIsLoaderVisible(true); // Отображаем лоадер
     mainApi
@@ -43,8 +43,8 @@ const MoviesCard = ({
       });
   };
 
-  // Удалить карточку
-  const handleButtonDeleteClick = () => {
+  // Снять лайк с карточки (Удалить фильм)
+  const handleButtonDislikeClick = () => {
     setIsLoaderVisible(true);
     const savedMovie = savedMovies?.find((item) => item.movieId === movie.id);
     mainApi
@@ -62,26 +62,40 @@ const MoviesCard = ({
       });
   };
 
+  // Удалить фильм со страницы "Сохраненные фильмы"
+  const handleButtonDeleteClick = () => {
+    setIsLoaderVisible(true);
+    mainApi
+      .deleteMovie(movie._id)
+      .then(() => {
+        setSavedMovies((newMoviesList) =>
+          newMoviesList.filter((m) => m._id !== movie._id)
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoaderVisible(false);
+      });
+  };
+
   return (
     <section className="movies-card">
       <div className="movies-card__info">
         <p className="movies-card__name">{movie.nameRU}</p>
-        <div className="movies-card__duration">{`${Math.floor(
-          movie.duration / 60
-        )}ч ${movie.duration % 60}м`}</div>
+        <div className="movies-card__duration">{`${Math.floor(movie.duration / 60)}ч ${
+          movie.duration % 60
+        }м`}</div>
         {location.pathname === "/movies" ? (
           <Button
             text={""}
             type={"movies-like"}
             additionalClass={saved ? "button_type_movies-like_active" : ""}
-            onClick={saved ? handleButtonDeleteClick : handleLikeClick}
+            onClick={saved ? handleButtonDislikeClick : handleLikeClick}
           />
         ) : (
-          <Button
-            text={""}
-            type={"delete-movie"}
-            onClick={handleButtonDeleteClick}
-          />
+          <Button text={""} type={"delete-movie"} onClick={handleButtonDeleteClick} />
         )}
       </div>
       <a
@@ -92,7 +106,11 @@ const MoviesCard = ({
       >
         <img
           className="movies-card__image"
-          src={`https://api.nomoreparties.co${movie.image.url}`}
+          src={
+            movie.image.url
+              ? `https://api.nomoreparties.co${movie.image.url}`
+              : movie.image
+          }
           alt={movie.nameRU}
         />
       </a>

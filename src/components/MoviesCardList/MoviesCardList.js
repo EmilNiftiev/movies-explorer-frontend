@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Button from "../Button/Button";
 import { shortMovieDuration } from "../../utils/constants";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const MoviesCardList = ({
   foundMovies,
@@ -10,8 +12,10 @@ const MoviesCardList = ({
   isShortMovieChecked,
   savedMovies,
   setSavedMovies,
+  searchSavedMovies,
 }) => {
   const location = useLocation();
+  const currentUser = useContext(CurrentUserContext);
 
   // Отображение результатов поиска в зависимости от чекбокса короткометражек
   const filteredMovies = isShortMovieChecked
@@ -24,6 +28,26 @@ const MoviesCardList = ({
     });
   }
 
+  // ------------------------ Раздел "Сохраненные фильмы" ------------------------------
+
+  // Фильмы, которые сохранил текущий пользователь
+  const savedByCurrentUser = savedMovies.filter(
+    (movie) => movie.owner === currentUser._id
+  );
+
+  // Фильтруем сохраненные фильмы по длительности
+  const filteredSavedMovies = isShortMovieChecked
+    ? savedByCurrentUser.filter((movie) => movie.duration < shortMovieDuration)
+    : savedByCurrentUser;
+
+  // Показать сохраненные фильмы при поиске
+  const filteredSavedMoviesWithSearch =
+    searchSavedMovies !== ""
+      ? filteredSavedMovies.filter((movie) =>
+          movie.nameRU.toLowerCase().includes(searchSavedMovies?.toLowerCase())
+        )
+      : filteredSavedMovies;
+
   return (
     <section>
       {/* До начала поиска отображаем надпись "ничего не найдено" */}
@@ -32,9 +56,11 @@ const MoviesCardList = ({
       )}
       {/* --------------------------------------------------------------- */}
       {/* На странице сохраненных фильмов - "У Вас нет сохранённых фильмов" */}
-      {location.pathname === "/saved-movies" && (
-        <p className="movies-not-found">У Вас нет сохранённых фильмов</p>
-      )}
+      {location.pathname === "/saved-movies" &&
+        filteredSavedMoviesWithSearch.length === 0 && (
+          <p className="movies-not-found">У Вас нет сохранённых фильмов</p>
+        )}
+
       {/* --------------------------------------------------------------- */}
       {location.pathname === "/movies" && (
         <ul className="movies-card-list">
@@ -52,10 +78,14 @@ const MoviesCardList = ({
       )}
       {location.pathname === "/saved-movies" && (
         <ul className="movies-card-list">
-          <MoviesCard
-            setIsLoaderVisible={setIsLoaderVisible}
-            setSavedMovies={setSavedMovies}
-          />
+          {filteredSavedMoviesWithSearch?.map((savedMovie) => (
+            <MoviesCard
+              setIsLoaderVisible={setIsLoaderVisible}
+              setSavedMovies={setSavedMovies}
+              key={savedMovie._id}
+              movie={savedMovie}
+            />
+          ))}
         </ul>
       )}
       {location.pathname === "/movies" && filteredMovies.length !== 0 && (

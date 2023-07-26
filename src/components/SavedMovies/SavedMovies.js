@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import { useState } from "react";
 
 const SavedMovies = ({
   isLoggedIn,
@@ -15,6 +16,13 @@ const SavedMovies = ({
   savedMovies,
   setSavedMovies,
 }) => {
+  const [searchSavedMovies, setSearchSavedMovies] = useState("");
+
+  // Получить ключевую фразу для поиска
+  const getSearchSavedMovies = (text) => {
+    setSearchSavedMovies(text);
+  };
+
   return (
     <>
       <Header isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
@@ -24,6 +32,8 @@ const SavedMovies = ({
           setIsLoaderVisible={setIsLoaderVisible}
           isShortMovieChecked={isShortMovieChecked}
           setIsShortMovieChecked={setIsShortMovieChecked}
+          location={"saved"}
+          getSearchSavedMovies={getSearchSavedMovies}
         />
         <MoviesCardList
           foundMovies={foundMovies}
@@ -31,6 +41,7 @@ const SavedMovies = ({
           setIsLoaderVisible={setIsLoaderVisible}
           savedMovies={savedMovies}
           setSavedMovies={setSavedMovies}
+          searchSavedMovies={searchSavedMovies}
         />
       </section>
       <Footer />

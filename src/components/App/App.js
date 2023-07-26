@@ -81,6 +81,11 @@ const App = () => {
             setIsLoaderVisible(true);
             setCurrentUser(res);
             setIsLoggedIn(true);
+            // После успешной проверки токена делаем запрос на получение
+            // фильмов (загружаем сохраненные фильмы)
+            mainApi.getMovies().then((movies) => {
+              setSavedMovies(movies.reverse());
+            });
           }
         })
         .catch((res) => console.log(res))
@@ -166,6 +171,7 @@ const App = () => {
                 setIsShortMovieChecked={setIsShortMovieChecked}
                 savedMovies={savedMovies}
                 setSavedMovies={setSavedMovies}
+                foundMovies={foundMovies}
               />
             }
           />

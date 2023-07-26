@@ -30,6 +30,7 @@ const Movies = ({
           setFoundMovies={setFoundMovies}
           isShortMovieChecked={isShortMovieChecked}
           setIsShortMovieChecked={setIsShortMovieChecked}
+          location={"all-movies"}
         />
         <MoviesCardList
           foundMovies={foundMovies}
