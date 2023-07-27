@@ -4,7 +4,7 @@ const FilterCheckbox = ({ isShortMovieChecked, setIsShortMovieChecked }) => {
   // Обработчик чекбокса короткометражек
   const handleCheckbox = () => {
     setIsShortMovieChecked(!isShortMovieChecked);
-    localStorage.setItem("checkboxState", !isShortMovieChecked);
+    // localStorage.setItem("checkboxState", !isShortMovieChecked);
     // Если карточки уже отображены, новое состояние чекбокса всё
     // равно запишется в localStorage, даже если не нажать сабмит
   };

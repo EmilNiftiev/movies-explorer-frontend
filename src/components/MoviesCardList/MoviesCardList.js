@@ -2,7 +2,11 @@ import "./MoviesCardList.css";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Button from "../Button/Button";
-import { shortMovieDuration, moviesPerPage, moviesToUpload } from "../../utils/constants";
+import {
+  shortMovieDuration,
+  moviesPerPage,
+  moviesToUpload,
+} from "../../utils/constants";
 import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -39,7 +43,7 @@ const MoviesCardList = ({
 
   // Фильтруем сохраненные фильмы по длительности
   const filteredSavedMovies = isShortMovieChecked
-    ? savedByCurrentUser.filter((movie) => movie.duration < shortMovieDuration)
+    ? savedByCurrentUser.filter((movie) => movie.duration <= shortMovieDuration)
     : savedByCurrentUser;
 
   // Показать сохраненные фильмы при поиске
@@ -87,9 +91,11 @@ const MoviesCardList = ({
   return (
     <section>
       {/* До начала поиска отображаем надпись "ничего не найдено" */}
-      {location.pathname === "/movies" && filteredMovies.length === 0 && (
-        <p className="movies-not-found">Ничего не найдено</p>
-      )}
+      {location.pathname === "/movies" &&
+        localStorage.getItem("foundedMovies") &&
+        filteredMovies.length === 0 && (
+          <p className="movies-not-found">Ничего не найдено</p>
+        )}
       {/* --------------------------------------------------------------- */}
       {/* На странице сохраненных фильмов - "У Вас нет сохранённых фильмов" */}
       {location.pathname === "/saved-movies" &&
@@ -100,16 +106,18 @@ const MoviesCardList = ({
       {/* --------------------------------------------------------------- */}
       {location.pathname === "/movies" && (
         <ul className="movies-card-list">
-          {filteredMovies?.slice(0, displayedMoviesState.showedMovies).map((movie) => (
-            <MoviesCard
-              setIsLoaderVisible={setIsLoaderVisible}
-              key={movie.id}
-              movie={movie}
-              savedMovies={savedMovies}
-              setSavedMovies={setSavedMovies}
-              saved={getSavedMovieCard(savedMovies, movie)}
-            />
-          ))}
+          {filteredMovies
+            ?.slice(0, displayedMoviesState.showedMovies)
+            .map((movie) => (
+              <MoviesCard
+                setIsLoaderVisible={setIsLoaderVisible}
+                key={movie.id}
+                movie={movie}
+                savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
+                saved={getSavedMovieCard(savedMovies, movie)}
+              />
+            ))}
         </ul>
       )}
       {location.pathname === "/saved-movies" && (

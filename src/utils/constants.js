@@ -1,5 +1,13 @@
 // --------- Список технологий для компонента Tech -----------
-export const techStack = ["HTML", "CSS", "JS", "React", "Git", "Express.js", "mongoDB"];
+export const techStack = [
+  "HTML",
+  "CSS",
+  "JS",
+  "React",
+  "Git",
+  "Express.js",
+  "mongoDB",
+];
 
 // --------- Получить текущую дату -----------
 export const currentDate = new Date().getFullYear();
@@ -32,6 +40,6 @@ export const moviesPerPage = {
 };
 export const moviesToUpload = {
   onDesktop: 7,
-  onTablet: 5,
-  onMobile: 5,
+  onTablet: 7,
+  onMobile: 2,
 };
