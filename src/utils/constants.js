@@ -1,13 +1,5 @@
 // --------- Список технологий для компонента Tech -----------
-export const techStack = [
-  "HTML",
-  "CSS",
-  "JS",
-  "React",
-  "Git",
-  "Express.js",
-  "mongoDB",
-];
+export const techStack = ["HTML", "CSS", "JS", "React", "Git", "Express.js", "mongoDB"];
 
 // --------- Получить текущую дату -----------
 export const currentDate = new Date().getFullYear();
@@ -15,7 +7,6 @@ export const currentDate = new Date().getFullYear();
 // --------- Константы и паттерны для валидации -----------
 export const nameMinLength = 2;
 export const nameMaxLength = 30;
-export const searchMovieNameMinLength = 2;
 export const searchMovieNameMaxLength = 30;
 export const passwordMinLength = 8;
 export const emailRegex =
@@ -40,7 +31,7 @@ export const moviesPerPage = {
   onMobile: 5,
 };
 export const moviesToUpload = {
-  onDesktop: 3,
-  onTablet: 3,
-  onMobile: 2,
+  onDesktop: 7,
+  onTablet: 5,
+  onMobile: 5,
 };

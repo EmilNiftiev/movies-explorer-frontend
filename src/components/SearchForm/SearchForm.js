@@ -3,10 +3,7 @@ import Button from "../Button/Button";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useForm } from "react-hook-form";
 import moviesApi from "../../utils/MoviesApi";
-import {
-  searchMovieNameMinLength,
-  searchMovieNameMaxLength,
-} from "../../utils/constants";
+import { searchMovieNameMaxLength } from "../../utils/constants";
 import { useLocation } from "react-router-dom";
 
 const SearchForm = ({
@@ -88,10 +85,6 @@ const SearchForm = ({
             placeholder="Фильм"
             {...register("movieName", {
               required: "Нужно ввести ключевое слово",
-              minLength: {
-                value: searchMovieNameMinLength,
-                message: "Минимальная длина - 2 символа",
-              },
               maxLength: {
                 value: searchMovieNameMaxLength,
                 message: "Максимальная длина - 30 символов",
