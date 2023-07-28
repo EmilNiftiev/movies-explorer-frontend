@@ -1,13 +1,5 @@
 // --------- Список технологий для компонента Tech -----------
-export const techStack = [
-  "HTML",
-  "CSS",
-  "JS",
-  "React",
-  "Git",
-  "Express.js",
-  "mongoDB",
-];
+export const techStack = ["HTML", "CSS", "JS", "React", "Git", "Express.js", "mongoDB"];
 
 // --------- Получить текущую дату -----------
 export const currentDate = new Date().getFullYear();
@@ -22,7 +14,7 @@ export const emailRegex =
 export const nameRegex = /^[а-яА-Яa-zA-ZЁёәіңғүұқөһӘІҢҒҮҰҚӨҺ\-\s]*$/;
 
 // --------- Длительность короткометражного фильма -----------
-export const shortMovieDuration = 40;
+export const SHORT_MOVIE_DURATION = 40;
 
 // --------- Сообщения-предупреждения для валидации -----------
 export const validationMessages = {
@@ -34,12 +26,12 @@ export const validationMessages = {
 
 // --------- Константы для обработчика кнопки "Ещё" на странице "Фильмы" ---------
 export const moviesPerPage = {
-  onDesktop: 7,
-  onTablet: 7,
-  onMobile: 5,
+  ON_DESKTOP: 7,
+  ON_TABLET: 7,
+  ON_MOBILE: 5,
 };
 export const moviesToUpload = {
-  onDesktop: 7,
-  onTablet: 7,
-  onMobile: 2,
+  ON_DESKTOP: 7,
+  ON_TABLET: 7,
+  ON_MOBILE: 2,
 };

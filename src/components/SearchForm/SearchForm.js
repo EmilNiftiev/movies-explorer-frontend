@@ -27,7 +27,10 @@ const SearchForm = ({
   } = useForm({
     mode: "onChange",
     values: {
-      movieName: pathname === "/movies" ? localStorage.getItem("searchInputValue") : "",
+      movieName:
+        pathname === "/movies"
+          ? localStorage.getItem("searchInputValue")
+          : localStorage.getItem("savedMoviesSearchInputValue"),
     },
   });
 
@@ -36,6 +39,7 @@ const SearchForm = ({
     // Если поиск выполняется на странице "Сохраненные фильмы"
     if (location === "saved") {
       getSearchSavedMovies(searchdata.movieName);
+      localStorage.setItem("savedMoviesSearchInputValue", searchdata.movieName);
     } else {
       localStorage.removeItem("foundedMovies"); // Очищаем перед поиском
       // Если поиск выполняется в первый раз
@@ -64,7 +68,6 @@ const SearchForm = ({
             }
             localStorage.setItem("foundedMovies", JSON.stringify(foundedMovies)); // Добавляем найденный фильм в лок. хран.
             localStorage.setItem("checkboxState", isShortMovieChecked);
-            localStorage.setItem("searchInputValue", searchdata.movieName);
           })
           .catch((err) => {
             console.log(err);
@@ -87,6 +90,7 @@ const SearchForm = ({
         // Обновляем стейт
         setFoundMovies(foundedMovies);
       }
+      localStorage.setItem("searchInputValue", searchdata.movieName);
     }
   };
 

@@ -2,7 +2,11 @@ import "./MoviesCardList.css";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Button from "../Button/Button";
-import { shortMovieDuration, moviesPerPage, moviesToUpload } from "../../utils/constants";
+import {
+  SHORT_MOVIE_DURATION,
+  moviesPerPage,
+  moviesToUpload,
+} from "../../utils/constants";
 import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -21,7 +25,7 @@ const MoviesCardList = ({
 
   // Отображение результатов поиска в зависимости от чекбокса короткометражек
   const filteredMovies = isShortMovieChecked
-    ? foundMovies.filter((movie) => movie.duration <= shortMovieDuration)
+    ? foundMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION)
     : foundMovies;
 
   function getSavedMovieCard(arr, movie) {
@@ -39,7 +43,7 @@ const MoviesCardList = ({
 
   // Фильтруем сохраненные фильмы по длительности
   const filteredSavedMovies = isShortMovieChecked
-    ? savedByCurrentUser.filter((movie) => movie.duration <= shortMovieDuration)
+    ? savedByCurrentUser.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION)
     : savedByCurrentUser;
 
   // Показать сохраненные фильмы при поиске
@@ -53,25 +57,25 @@ const MoviesCardList = ({
   // ------------------------- Настройка работы кнопки "Ещё" ----------------------
   // Стейт количества отображаемых фильмов
   const [displayedMoviesState, setDisplayedMoviesState] = useState({
-    showedMovies: moviesPerPage.onDesktop,
-    loadMoreMovies: moviesToUpload.onDesktop,
+    showedMovies: moviesPerPage.ON_DESKTOP,
+    loadMoreMovies: moviesToUpload.ON_DESKTOP,
   });
   // Количество отображаемых карточек в зависимости от разрешения экрана
   useEffect(() => {
     if (isMobile) {
       setDisplayedMoviesState({
-        showedMovies: moviesPerPage.onMobile,
-        loadMoreMovies: moviesToUpload.onMobile,
+        showedMovies: moviesPerPage.ON_MOBILE,
+        loadMoreMovies: moviesToUpload.ON_MOBILE,
       });
     } else if (isTablet) {
       setDisplayedMoviesState({
-        showedMovies: moviesPerPage.onTablet,
-        loadMoreMovies: moviesToUpload.onTablet,
+        showedMovies: moviesPerPage.ON_TABLET,
+        loadMoreMovies: moviesToUpload.ON_TABLET,
       });
     } else {
       setDisplayedMoviesState({
-        showedMovies: moviesPerPage.onDesktop,
-        loadMoreMovies: moviesToUpload.onDesktop,
+        showedMovies: moviesPerPage.ON_DESKTOP,
+        loadMoreMovies: moviesToUpload.ON_DESKTOP,
       });
     }
   }, [isTablet, isMobile]);
