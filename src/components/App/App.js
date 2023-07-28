@@ -135,6 +135,7 @@ const App = () => {
                 <Navigate to="/" />
               ) : (
                 <Login
+                  isLoaderVisible={isLoaderVisible}
                   setIsLoaderVisible={setIsLoaderVisible}
                   handleLogin={handleLogin}
                   setTooltipState={setTooltipState}
@@ -149,6 +150,7 @@ const App = () => {
                 <Navigate to="/" />
               ) : (
                 <Register
+                  isLoaderVisible={isLoaderVisible}
                   setIsLoaderVisible={setIsLoaderVisible}
                   handleLogin={handleLogin}
                   setTooltipState={setTooltipState}
@@ -204,6 +206,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 openSideMenu={openSideMenu}
                 setCurrentUser={setCurrentUser}
+                isLoaderVisible={isLoaderVisible}
                 setIsLoaderVisible={setIsLoaderVisible}
                 setTooltipState={setTooltipState}
                 logOut={logOut}

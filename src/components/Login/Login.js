@@ -10,7 +10,7 @@ import {
 } from "../../utils/constants";
 import mainApi from "../../utils/MainApi";
 
-const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
+const Login = ({ isLoaderVisible, setIsLoaderVisible, handleLogin, setTooltipState }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -101,6 +101,7 @@ const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
           text={"Войти"}
           type={"form-login"}
           buttonType="submit"
+          disabled={isLoaderVisible}
         />
       </form>
       <div className="login__link-container">

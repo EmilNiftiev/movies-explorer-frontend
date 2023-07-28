@@ -13,7 +13,12 @@ import {
 } from "../../utils/constants";
 import mainApi from "../../utils/MainApi";
 
-const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
+const Register = ({
+  isLoaderVisible,
+  setIsLoaderVisible,
+  handleLogin,
+  setTooltipState,
+}) => {
   const {
     register,
     formState: { errors, isValid },
@@ -134,6 +139,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
           text={"Зарегистрироваться"}
           type={"form-register"}
           buttonType="submit"
+          disabled={isLoaderVisible}
         />
       </form>
       <div className="register__link-container">

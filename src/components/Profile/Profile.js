@@ -16,6 +16,7 @@ import mainApi from "../../utils/MainApi";
 function Profile({
   isLoggedIn,
   openSideMenu,
+  isLoaderVisible,
   setIsLoaderVisible,
   logOut,
   setCurrentUser,
@@ -123,6 +124,7 @@ function Profile({
             text={"Редактировать"}
             type={"profile-edit"}
             buttonType="submit"
+            disabled={isLoaderVisible}
           />
         </form>
         <Button onClick={logOut} text={"Выйти из аккаунта"} type={"profile-logout"} />
