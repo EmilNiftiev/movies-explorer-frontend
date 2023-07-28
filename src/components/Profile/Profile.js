@@ -3,10 +3,10 @@ import Header from "../Header/Header";
 import Button from "../Button/Button";
 import { useForm } from "react-hook-form";
 import {
-  nameMinLength,
-  nameMaxLength,
-  nameRegex,
-  emailRegex,
+  NAME_MIN_LENGTH,
+  NAME_MAX_LENGTH,
+  NAME_REGEX,
+  EMAIL_REGEX,
   validationMessages,
 } from "../../utils/constants";
 import { useContext } from "react";
@@ -78,16 +78,16 @@ function Profile({
                 name="name"
                 id="name-input"
                 {...register("firstName", {
-                  required: validationMessages.required,
+                  required: validationMessages.REQUIRED,
                   minLength: {
-                    value: nameMinLength,
-                    message: validationMessages.nameMinLength,
+                    value: NAME_MIN_LENGTH,
+                    message: validationMessages.NAME_MIN_LENGTH,
                   },
                   maxLength: {
-                    value: nameMaxLength,
-                    message: validationMessages.nameMaxLength,
+                    value: NAME_MAX_LENGTH,
+                    message: validationMessages.NAME_MAX_LENGTH,
                   },
-                  pattern: nameRegex,
+                  pattern: NAME_REGEX,
                 })}
               />
             </div>
@@ -108,7 +108,7 @@ function Profile({
                 id="email-input"
                 {...register("email", {
                   required: true,
-                  pattern: emailRegex,
+                  pattern: EMAIL_REGEX,
                 })}
               />
             </div>

@@ -4,11 +4,11 @@ import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
-  nameMinLength,
-  nameMaxLength,
-  nameRegex,
-  emailRegex,
-  passwordMinLength,
+  NAME_MIN_LENGTH,
+  NAME_MAX_LENGTH,
+  NAME_REGEX,
+  EMAIL_REGEX,
+  PASSWORD_MIN_LENGTH,
   validationMessages,
 } from "../../utils/constants";
 import mainApi from "../../utils/MainApi";
@@ -65,16 +65,16 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
               id="name-input"
               placeholder="Введите Ваше имя"
               {...register("firstName", {
-                required: validationMessages.required,
+                required: validationMessages.REQUIRED,
                 minLength: {
-                  value: nameMinLength,
-                  message: validationMessages.nameMinLength,
+                  value: NAME_MIN_LENGTH,
+                  message: validationMessages.NAME_MIN_LENGTH,
                 },
                 maxLength: {
-                  value: nameMaxLength,
-                  message: validationMessages.nameMaxLength,
+                  value: NAME_MAX_LENGTH,
+                  message: validationMessages.NAME_MAX_LENGTH,
                 },
-                pattern: nameRegex,
+                pattern: NAME_REGEX,
               })}
             />
           </div>
@@ -95,7 +95,7 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
               placeholder="Укажите e-mail адрес"
               {...register("email", {
                 required: true,
-                pattern: emailRegex,
+                pattern: EMAIL_REGEX,
               })}
             />
           </div>
@@ -113,10 +113,10 @@ const Register = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
               id="password-input"
               placeholder="Введите пароль"
               {...register("password", {
-                required: validationMessages.required,
+                required: validationMessages.REQUIRED,
                 minLength: {
-                  value: passwordMinLength,
-                  message: validationMessages.passwordMinLength,
+                  value: PASSWORD_MIN_LENGTH,
+                  message: validationMessages.PASSWORD_MIN_LENGTH,
                 },
               })}
             />

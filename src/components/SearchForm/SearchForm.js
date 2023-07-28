@@ -3,10 +3,11 @@ import Button from "../Button/Button";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useForm } from "react-hook-form";
 import moviesApi from "../../utils/MoviesApi";
-import { searchMovieNameMaxLength } from "../../utils/constants";
+import { SEARCH_MOVIE_NAME_MAX_LENGTH } from "../../utils/constants";
 import { useLocation } from "react-router-dom";
 
 const SearchForm = ({
+  isLoaderVisible,
   setIsLoaderVisible,
   setTooltipState,
   movies,
@@ -102,10 +103,11 @@ const SearchForm = ({
             className="search-form__input"
             name="search"
             placeholder="Фильм"
+            disabled={isLoaderVisible}
             {...register("movieName", {
               required: "Нужно ввести ключевое слово",
               maxLength: {
-                value: searchMovieNameMaxLength,
+                value: SEARCH_MOVIE_NAME_MAX_LENGTH,
                 message: "Максимальная длина - 30 символов",
               },
             })}
@@ -114,6 +116,7 @@ const SearchForm = ({
           <Button
             type="search"
             buttonType="submit"
+            disabled={isLoaderVisible}
             additionalClass={!isValid && "button_disabled"}
           />
         </div>

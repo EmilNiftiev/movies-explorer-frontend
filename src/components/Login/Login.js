@@ -3,7 +3,11 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { emailRegex, passwordMinLength, validationMessages } from "../../utils/constants";
+import {
+  EMAIL_REGEX,
+  PASSWORD_MIN_LENGTH,
+  validationMessages,
+} from "../../utils/constants";
 import mainApi from "../../utils/MainApi";
 
 const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
@@ -58,7 +62,7 @@ const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
               placeholder="Укажите e-mail адрес"
               {...register("email", {
                 required: true,
-                pattern: emailRegex,
+                pattern: EMAIL_REGEX,
               })}
             />
           </div>
@@ -76,10 +80,10 @@ const Login = ({ setIsLoaderVisible, handleLogin, setTooltipState }) => {
               id="password-input"
               placeholder="Введите пароль"
               {...register("password", {
-                required: validationMessages.required,
+                required: validationMessages.REQUIRED,
                 minLength: {
-                  value: passwordMinLength,
-                  message: validationMessages.passwordMinLength,
+                  value: PASSWORD_MIN_LENGTH,
+                  message: validationMessages.PASSWORD_MIN_LENGTH,
                 },
               })}
             />

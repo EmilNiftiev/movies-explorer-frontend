@@ -15,6 +15,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Preloader from "../Preloader/Preloader";
 import TooltipPopup from "../TooltipPopup/TooltipPopup";
 import mainApi from "../../utils/MainApi";
+import { TABLET_WIDTH, MOBILE_WIDTH } from "../../utils/constants";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("loggedIn") || false);
@@ -22,8 +23,8 @@ const App = () => {
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
 
   // ------------------- Определяем тип устройства -------------------
-  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
-  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+  const isTablet = useMediaQuery({ query: TABLET_WIDTH });
+  const isMobile = useMediaQuery({ query: MOBILE_WIDTH });
 
   // ------------------- Управление боковым меню -------------------
   const [isSideMenu, setIsSideMenu] = useState(false);
@@ -162,6 +163,7 @@ const App = () => {
                 element={Movies}
                 isLoggedIn={isLoggedIn}
                 openSideMenu={openSideMenu}
+                isLoaderVisible={isLoaderVisible}
                 setIsLoaderVisible={setIsLoaderVisible}
                 setTooltipState={setTooltipState}
                 movies={movies}

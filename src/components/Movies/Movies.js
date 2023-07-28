@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 const Movies = ({
   isLoggedIn,
   openSideMenu,
+  isLoaderVisible,
   setIsLoaderVisible,
   setTooltipState,
   movies,
@@ -25,6 +26,7 @@ const Movies = ({
       <Header isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
       <section className="movies">
         <SearchForm
+          isLoaderVisible={isLoaderVisible}
           setIsLoaderVisible={setIsLoaderVisible}
           setTooltipState={setTooltipState}
           movies={movies}
