@@ -2,11 +2,7 @@ import "./MoviesCardList.css";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Button from "../Button/Button";
-import {
-  shortMovieDuration,
-  moviesPerPage,
-  moviesToUpload,
-} from "../../utils/constants";
+import { shortMovieDuration, moviesPerPage, moviesToUpload } from "../../utils/constants";
 import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -106,18 +102,16 @@ const MoviesCardList = ({
       {/* --------------------------------------------------------------- */}
       {location.pathname === "/movies" && (
         <ul className="movies-card-list">
-          {filteredMovies
-            ?.slice(0, displayedMoviesState.showedMovies)
-            .map((movie) => (
-              <MoviesCard
-                setIsLoaderVisible={setIsLoaderVisible}
-                key={movie.id}
-                movie={movie}
-                savedMovies={savedMovies}
-                setSavedMovies={setSavedMovies}
-                saved={getSavedMovieCard(savedMovies, movie)}
-              />
-            ))}
+          {filteredMovies?.slice(0, displayedMoviesState.showedMovies).map((movie) => (
+            <MoviesCard
+              setIsLoaderVisible={setIsLoaderVisible}
+              key={movie.id}
+              movie={movie}
+              savedMovies={savedMovies}
+              setSavedMovies={setSavedMovies}
+              saved={getSavedMovieCard(savedMovies, movie)}
+            />
+          ))}
         </ul>
       )}
       {location.pathname === "/saved-movies" && (

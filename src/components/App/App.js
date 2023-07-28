@@ -66,11 +66,6 @@ const App = () => {
     navigate("/movies");
   };
   const logOut = () => {
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("loggedIn");
-    // localStorage.removeItem("foundedMovies");
-    // localStorage.removeItem("searchInputValue");
-    // localStorage.removeItem("checkboxState");
     localStorage.clear();
     setMovies([]);
     setFoundMovies([]);
@@ -96,7 +91,13 @@ const App = () => {
             });
           }
         })
-        .catch((res) => console.log(res))
+        .catch((res) => {
+          console.log(res);
+          // Если токен не прошел проверку, меняем стейт логина
+          // и переводим пользователя на страницу входа
+          setIsLoggedIn(false);
+          navigate("/signin");
+        })
         .finally(() => {
           setIsLoaderVisible(false);
         });
