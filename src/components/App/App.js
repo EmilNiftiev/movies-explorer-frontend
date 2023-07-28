@@ -17,9 +17,7 @@ import TooltipPopup from "../TooltipPopup/TooltipPopup";
 import mainApi from "../../utils/MainApi";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("loggedIn") || false
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("loggedIn") || false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
 
@@ -74,6 +72,7 @@ const App = () => {
     // localStorage.removeItem("searchInputValue");
     // localStorage.removeItem("checkboxState");
     localStorage.clear();
+    setMovies([]);
     setFoundMovies([]);
     setIsLoggedIn(false);
     navigate("/");
@@ -103,9 +102,7 @@ const App = () => {
         });
       // Если в локальном хранилище уже есть найденные фильмы, отображаем их
       if (localStorage.getItem("foundedMovies")) {
-        setFoundMovies(
-          JSON.parse(localStorage.getItem("foundedMovies")) || "[]"
-        );
+        setFoundMovies(JSON.parse(localStorage.getItem("foundedMovies")) || "[]");
       }
     }
   };
@@ -118,10 +115,7 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <section className="app">
         <Preloader isLoaderVisible={isLoaderVisible} />
-        <TooltipPopup
-          tooltipState={tooltipState}
-          setTooltipState={setTooltipState}
-        />
+        <TooltipPopup tooltipState={tooltipState} setTooltipState={setTooltipState} />
         <SideMenu
           isLoggedIn={isLoggedIn}
           isSideMenu={isSideMenu}
@@ -130,9 +124,7 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={
-              <Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
-            }
+            element={<Main isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />}
           />
           <Route
             path="/signin"

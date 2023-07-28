@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 const SearchForm = ({
   setIsLoaderVisible,
   setTooltipState,
+  movies,
   setMovies,
   setFoundMovies,
   isShortMovieChecked,
@@ -32,46 +33,60 @@ const SearchForm = ({
 
   // -------------------- Сабмит -----------------------
   const onSubmit = (searchdata) => {
+    // Если поиск выполняется на странице "Сохраненные фильмы"
     if (location === "saved") {
       getSearchSavedMovies(searchdata.movieName);
     } else {
-      setIsLoaderVisible(true); // Отображаем лоадер
-      moviesApi
-        .getMovies() // Получаем все фильмы
-        .then((movies) => {
-          setMovies(movies); // Загрузить фильмы
-          // Фильтруем по тексту в поиске
-          const foundedMovies = movies.filter(
-            (movie) =>
-              movie.nameRU.toLowerCase().includes(searchdata.movieName.toLowerCase()) // movieName - значение инпута
-          );
-          // Если массив не пустой, то записываем найденное в лок. хран.
-          if (foundedMovies.length !== 0) {
-            // Обновляем стейт
-            setFoundMovies(foundedMovies);
-            // Если ничего не найдено, покажем предупреждение
-          } else {
+      localStorage.removeItem("foundedMovies"); // Очищаем перед поиском
+      // Если поиск выполняется в первый раз
+      if (!movies.length) {
+        setIsLoaderVisible(true); // Отображаем лоадер
+        moviesApi
+          .getMovies() // Получаем все фильмы
+          .then((movies) => {
+            setMovies(movies); // Загрузить фильмы
+            // Фильтруем по тексту в поиске
+            const foundedMovies = movies.filter(
+              (movie) =>
+                movie.nameRU.toLowerCase().includes(searchdata.movieName.toLowerCase()) // movieName - значение инпута
+            );
+            // Если массив не пустой, то записываем найденное в лок. хран.
+            if (foundedMovies.length !== 0) {
+              // Обновляем стейт
+              setFoundMovies(foundedMovies);
+              // Если ничего не найдено, покажем предупреждение
+            } else {
+              setTooltipState({
+                isVisible: true,
+                isSuccessful: false,
+                text: "Ничего не найдено!",
+              });
+            }
+            localStorage.setItem("foundedMovies", JSON.stringify(foundedMovies)); // Добавляем найденный фильм в лок. хран.
+            localStorage.setItem("checkboxState", isShortMovieChecked);
+            localStorage.setItem("searchInputValue", searchdata.movieName);
+          })
+          .catch((err) => {
+            console.log(err);
             setTooltipState({
               isVisible: true,
               isSuccessful: false,
-              text: "Ничего не найдено!",
+              text: "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз",
             });
-          }
-          localStorage.setItem("foundedMovies", JSON.stringify(foundedMovies)); // Добавляем найденный фильм в лок. хран.
-          localStorage.setItem("checkboxState", isShortMovieChecked);
-          localStorage.setItem("searchInputValue", searchdata.movieName);
-        })
-        .catch((err) => {
-          console.log(err);
-          setTooltipState({
-            isVisible: true,
-            isSuccessful: false,
-            text: "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз",
+          })
+          .finally(() => {
+            setIsLoaderVisible(false);
           });
-        })
-        .finally(() => {
-          setIsLoaderVisible(false);
-        });
+      } else {
+        // Если данные уже получены с сервера, фильтруем
+        const foundedMovies = movies.filter((movie) =>
+          movie.nameRU.toLowerCase().includes(searchdata.movieName.toLowerCase())
+        );
+        // Добавляем найденные фильмы в лок. хран.
+        localStorage.setItem("foundedMovies", JSON.stringify(foundedMovies));
+        // Обновляем стейт
+        setFoundMovies(foundedMovies);
+      }
     }
   };
 
