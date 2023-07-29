@@ -40,7 +40,7 @@ const SearchForm = ({
     // Если поиск выполняется на странице "Сохраненные фильмы"
     if (location === "saved") {
       getSearchSavedMovies(searchdata.movieName);
-      // localStorage.setItem("savedMoviesSearchInputValue", searchdata.movieName);
+      localStorage.setItem("savedMoviesSearchInputValue", searchdata.movieName);
     } else {
       localStorage.removeItem("foundedMovies"); // Очищаем перед поиском
       // Если поиск выполняется в первый раз
