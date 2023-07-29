@@ -97,6 +97,7 @@ const App = () => {
           // Если токен не прошел проверку, меняем стейт логина
           // и переводим пользователя на страницу входа
           setIsLoggedIn(false);
+          localStorage.clear(); // Чистим хранилище
           navigate("/signin");
         })
         .finally(() => {
