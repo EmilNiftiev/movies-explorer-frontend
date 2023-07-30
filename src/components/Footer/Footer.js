@@ -1,12 +1,12 @@
 import "./Footer.css";
-import { currentDate } from "../../utils/constants";
+import { CURRENT_DATE } from "../../utils/constants";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <p className="footer__text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
       <div className="footer__container">
-        <p className="footer__copyright">&copy; {currentDate}</p>
+        <p className="footer__copyright">&copy; {CURRENT_DATE}</p>
         <ul className="footer__list">
           <li className="footer__list-item">
             <a

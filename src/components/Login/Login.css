@@ -19,12 +19,12 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 0 0 20px 0;
-}
-
-.login__input-container:last-of-type {
   margin: 0;
 }
+
+/* .login__input-container:last-of-type {
+  margin: 0;
+} */
 
 .login__input-caption {
   font-weight: normal;
@@ -88,6 +88,19 @@
   line-height: 17px;
   color: #8b8b8b;
   margin: 0 6px 0 0;
+}
+
+.login__errors-container {
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.login__error-message {
+  color: #ee3465;
+  font-size: 10px;
+  margin: 0;
+  margin-top: 3px;
 }
 
 @media screen and (max-width: 768px) {

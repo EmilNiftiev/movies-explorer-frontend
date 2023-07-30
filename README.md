@@ -34,9 +34,11 @@
 
 ##### Ссылки:
 
-- [**Ссылка на пулл реквест.**](https://github.com/EmilNiftiev/movies-explorer-frontend/pull/1)
+- [**Ссылка на пулл реквест.**](https://github.com/EmilNiftiev/movies-explorer-frontend/pull/2)
 
 IP 84.201.132.60;
+
+Frontend https://front.emilniftiev.diplom.nomoreparties.sbs;
 
 Backend https://api.emilniftiev.diplom.nomoreparties.sbs;
 

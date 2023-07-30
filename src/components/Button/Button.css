@@ -15,6 +15,11 @@
   opacity: 0.8;
 }
 
+.button_disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
 .button_type_login {
   margin-left: 30px;
   padding: 8px 20px;
@@ -92,7 +97,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  margin-top: 179px;
+  margin-top: 159px;
   padding: 13px 0 15px;
 }
 
@@ -104,7 +109,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  margin-top: 91px;
+  margin-top: 71px;
   padding: 13px 0 15px;
 }
 
@@ -113,7 +118,7 @@
   background-color: inherit;
   font-size: 13px;
   line-height: 16px;
-  margin-top: 204px;
+  margin-top: 192px;
 }
 
 .button_type_logout {
@@ -149,6 +154,20 @@
   display: none;
 }
 
+.button_type_close-popup {
+  width: 22px;
+  height: 22px;
+  color: #000;
+  background-image: url(../../images/button/popup-close-icon.svg);
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .button_type_burger-button {
     display: block;
@@ -157,7 +176,7 @@
     margin: 80px auto 51px;
   }
   .button_type_profile-edit {
-    margin-top: 196px;
+    margin-top: 184px;
   }
 }
 
@@ -173,8 +192,8 @@
   }
   .button_type_movies-like {
     position: absolute;
-    top: 16px;
-    right: -44px;
+    top: 183px;
+    right: 16px;
   }
   .button_type_burger-button {
     width: 22px;
@@ -186,11 +205,11 @@
   }
   .button_type_delete-movie {
     position: absolute;
-    top: 16px;
-    right: -44px;
+    top: 183px;
+    right: 16px;
   }
   .button_type_profile-edit {
-    margin-top: 363px;
+    margin-top: 351px;
     font-size: 12px;
   }
   .button_type_logout {
@@ -200,13 +219,13 @@
   .button_type_form-register {
     max-width: 260px;
     font-size: 12px;
-    margin-top: 179px;
+    margin-top: 159px;
     padding: 14px 0;
   }
   .button_type_form-login {
     max-width: 260px;
     font-size: 12px;
-    margin-top: 267px;
+    margin-top: 247px;
     padding: 14px 0;
   }
 }
