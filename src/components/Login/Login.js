@@ -31,6 +31,7 @@ const Login = ({ isLoaderVisible, setIsLoaderVisible, handleLogin, setTooltipSta
         });
         localStorage.setItem("token", data.token);
         handleLogin();
+        reset();
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +43,6 @@ const Login = ({ isLoaderVisible, setIsLoaderVisible, handleLogin, setTooltipSta
       })
       .finally(() => {
         setIsLoaderVisible(false);
-        reset();
       });
   };
 
@@ -59,6 +59,7 @@ const Login = ({ isLoaderVisible, setIsLoaderVisible, handleLogin, setTooltipSta
               className="login__form-input"
               name="email"
               id="email-input"
+              disabled={isLoaderVisible}
               placeholder="Укажите e-mail адрес"
               {...register("email", {
                 required: true,
@@ -78,6 +79,7 @@ const Login = ({ isLoaderVisible, setIsLoaderVisible, handleLogin, setTooltipSta
               className="login__form-input"
               name="password"
               id="password-input"
+              disabled={isLoaderVisible}
               placeholder="Введите пароль"
               {...register("password", {
                 required: validationMessages.REQUIRED,

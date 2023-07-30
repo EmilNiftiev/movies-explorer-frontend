@@ -39,6 +39,7 @@ const Register = ({
               isSuccessful: true,
               text: "Вы успешно зарегистрировались!",
             });
+            reset();
           }
         });
       })
@@ -52,7 +53,6 @@ const Register = ({
       })
       .finally(() => {
         setIsLoaderVisible(false);
-        reset();
       });
   };
   return (
@@ -67,6 +67,7 @@ const Register = ({
               type="text"
               className="register__form-input"
               name="name"
+              disabled={isLoaderVisible}
               id="name-input"
               placeholder="Введите Ваше имя"
               {...register("firstName", {
@@ -97,6 +98,7 @@ const Register = ({
               name="email"
               className="register__form-input"
               id="email-input"
+              disabled={isLoaderVisible}
               placeholder="Укажите e-mail адрес"
               {...register("email", {
                 required: true,
@@ -116,6 +118,7 @@ const Register = ({
               name="password"
               className="register__form-input"
               id="password-input"
+              disabled={isLoaderVisible}
               placeholder="Введите пароль"
               {...register("password", {
                 required: validationMessages.REQUIRED,

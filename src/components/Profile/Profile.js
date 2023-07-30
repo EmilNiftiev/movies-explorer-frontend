@@ -76,6 +76,7 @@ function Profile({
                 type="text"
                 placeholder="Введите имя"
                 className="profile__form-input"
+                disabled={isLoaderVisible}
                 name="name"
                 id="name-input"
                 {...register("firstName", {
@@ -104,6 +105,7 @@ function Profile({
               <input
                 type="email"
                 placeholder="Email"
+                disabled={isLoaderVisible}
                 className="profile__form-input"
                 name="email"
                 id="email-input"
